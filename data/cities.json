@@ -1,0 +1,47 @@
+{
+    "success": true,
+    "data": [
+        {
+            "area": "7.37",
+            "city": "Pembroke\/UK",
+            "coat_of_arms": "Pembroke-UK.jpg",
+            "coordinates": "51deg40'34\"N, 4deg54'57\"W",
+            "country": "United Kindom",
+            "currency": "GBP",
+            "decimal_coords": "51.676111, -4.915833",
+            "elevation": "77",
+            "name": "Pembroke",
+            "population": "7552",
+            "woeid": "31602",
+            "website": "http:\/\/www.pembroketown.org.uk\/"
+        },
+        {
+            "area": "163.77",
+            "city": "Bergen\/DE",
+            "coat_of_arms": "Bergen.png",
+            "coordinates": "52deg48'37\"N, 9deg57'40\"E",
+            "country": "Germany",
+            "currency": "EUR",
+            "decimal_coords": "52.810278, 9.961111",
+            "elevation": "68",
+            "name": "Bergen",
+            "population": "13027",
+            "woeid": "12833291",
+            "website": "http:\/\/www.bergen-online.de\/"
+        },
+        {
+            "area": "2.3",
+            "city": "Pembroke\/MT",
+            "coat_of_arms": "Pembroke-MT.jpg",
+            "coordinates": "35deg55'35\"N, 14deg28'51\"E",
+            "country": "Malta",
+            "currency": "EUR",
+            "decimal_coords": "35.926389, 14.480833",
+            "elevation": "51",
+            "name": "Pembroke",
+            "population": "3645",
+            "woeid": "10645040",
+            "website": "http:\/\/www.pembroke.gov.mt\/"
+        }
+    ]
+}
