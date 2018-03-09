@@ -2,13 +2,24 @@
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>Cities</title>
-  </head>
+    <title>Twin Cities</title>
+  </head>  
   <body>
-    
+    <div class="citySelectPane">
+		<div class="selectPaneTitle">Cities:</div>
+		<div id="citySelectNav">
+			<nav>
+				<ul>
+					<li main-city="1"><a href="javascript:">Pembroke, Wales</a></li>
+					<li main-city="2"><a href="javascript:">Somewhere else</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
     <div class="content">
       <nav class="tabs">
         <img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge" title="reset map">
+		<div class="title">Pairs:</div>
         <ul>
             <li data-city="Pembroke/UK"><a href="javascript:">Pembroke, Wales</a></li>
             <li data-city="Bergen/DE"><a href="javascript:">Bergen, Germany</a></li>

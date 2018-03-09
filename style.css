@@ -5,14 +5,18 @@ html, body {
 }
 nav.tabs {
   position: relative;
+  height:40px;
 }
 nav.tabs ul {
   /*height: 40px;*/
   overflow: hidden; 
   margin: 0;
   padding: 0;
+  position: relative;
+  left:100px;
   list-style-type: none;
   background-color: #333;
+  height:100%;
 }
 
 nav.tabs ul li {
@@ -42,6 +46,21 @@ nav.tabs .enlarge {
 }
 nav.tabs .enlarge:hover {
   opacity: 0.6;
+}
+nav.tabs .title {
+  width: 100px;
+  height:100%;
+  position: absolute;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-family: Helvetica; 
+  background-color: #333;
+  text-align: center;
+  display:block;
+  padding:0px;
+  font-size: larger;
+  font-weight: bold;
+  line-height:40px;
 }
 
 #map { 
@@ -100,4 +119,70 @@ body { display: flex; overflow: hidden; }
 .content {
   height: 100%;
   width: 100%;
+}
+.citySelectPane {
+	width:15%;
+	font-family:Helvetica;
+	text-decoration: none;
+	color: #f5f5f5;
+	background-color: #333;
+	border-right: solid 3px #ffc548;
+}
+
+#citySelectNav {
+	width:100%;
+	font-family:Helvetica;
+	text-decoration: none;
+	color: #f5f5f5;
+	overflow: hidden; 
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style-type: none;
+	background-color: #333;
+	list-style-type:none;
+}
+
+#citySelectNav ul li {
+  list-style-type: none;
+  float: left;
+}
+#citySelectNav ul li a {
+  display: block;
+  padding: 10px 0px;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-family: Helvetica;    
+}
+#citySelectNav ul li.hover a {
+  color: #ffc548;
+}
+#citySelectNav ul li.selected a,
+#citySelectNav ul li a:active {
+ color: #ffc548;
+}
+#citySelectNav .enlarge {
+  width: 26px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  cursor: pointer;
+}
+#citySelectNav .enlarge:hover {
+  opacity: 0.6;
+}
+
+.selectPaneTitle {
+  width: 100px;
+  position: relative;
+  text-decoration: none;
+  color: #f5f5f5;
+  font-family: Helvetica; 
+  background-color: #333;
+  text-align: center;
+  display:block;
+  padding:0px;
+  font-size: larger;
+  font-weight: bold;
+  line-height:40px;
 }
