@@ -1,24 +1,34 @@
-var markers = [],
-  map, 
-  infowin,
-  citiesJson,
-  placesJson;
+var markers = [], map, infowin, citiesList = [], placesList = [];
 
 var center = {lat: 48.8588377, lng: 2.2770202};
-var cities = [
-  {name: "Pembroke/UK", lat: 51.676111, lng: -4.915833, cluster:'main'},
-  {name: "Bergen/DE", lat: 52.810278, lng: 9.961111, cluster:'main'}, 
-  {name: "Pembroke/MT", lat: 35.926389, lng: 14.480833, cluster:'main'}
-];
+
+function loadCities()
+{
+	citiesList = [];
+	if (typeof cities != 'undefined')
+	{
+		cities.forEach(function(item) {
+			var coords = item.Decimal_coords.split(',');
+			citiesList.push({
+				id: item.UID,
+				CountryID: item.CountryID,
+				name: item.name,
+				lat: parseFloat(coords[0]),
+				lng: parseFloat(coords[1]),
+				cluster: 'main'
+			})
+		});
+	}
+}
 
 function initMap() {
+	loadCities();
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: center
   });
 
   map.addListener('zoom_changed', function() {
-    //infowindow.setContent('Zoom: ' + map.getZoom());
     var currentZoom = map.getZoom();
     if (currentZoom < 6) {
       infowin.close();
@@ -32,27 +42,26 @@ function initMap() {
 
   infowin = new google.maps.InfoWindow({ content: "" });
 
-  // get points of interest
-  //$.getJSON("data/places.json", {}, function(response) {
+ // get points of interest
   $.post("api.php", {method:'places'} , function(response) {
-    placesJson = response.data;
-    var places = cities;
-    placesJson.forEach(function(item) {
+    placesList = response.data;
+    var places = citiesList;
+    placesList.forEach(function(item) {
     	var coords = item.geolocation.split(',');
     	places.push({
     		name: item.name,
-    		cluster: item.city,
+    		cluster: item.CityID,
+			id: item.UID,
     		lat: parseFloat(coords[0]),
     		lng: parseFloat(coords[1])
     	})
     });
-
+	
     setMarkers(map, places);
   });
 
-  //$.getJSON("data/cities.json", {}, function(response) {
   $.post("api.php", {method:'cities'} , function(response) {
-    citiesJson = response.data;
+    citiesList = response.data;
   });  
 }
 
@@ -65,7 +74,7 @@ function setMarkers(map, data) {
     var mk = new google.maps.Marker({
       position: pos,
       map: map,
-      title: place.name
+      title: place.id
     });
 
     if(place.cluster == 'main') {
@@ -106,34 +115,27 @@ function displayMarkers(category) {
 	}
 }
 
-function displayWeather(name) {
-  if (name == 'hideAll') {
+function displayWeather(city) {
+  if (city == null) {
     $('.openweathermap-widget').hide();
   }
   else {
-    var city = citiesJson.find(c => c.city == name);
     $(`#openweathermap-${city.woeid}`).show().siblings().hide();
   }
 }
 
-function displayFlickr(name) {
+function displayFlickr(city) {
   var $flickrContainer = $('.flickr0');
   $flickrContainer.html('');
 
-  if (name != 'hideAll') {
-    var placeIds = {
-      "Pembroke/UK": "ZIa1xkZQULySiSPLdA",
-      "Bergen/DE": "qyw9WdNXUb1WY6c",
-      "Pembroke/MT": "Xb438KZQUrxS60kmdA"
-    };
-
-    var placeid = placeIds[name];
+  if (city != null) {
+    var placeid = city.flickr_id;
     var apikey = "ca370d51a054836007519a00ff4ce59e";
     var rootUrl = "https://api.flickr.com/services/rest/?method=";
     var apiPlacesUrl = `flickr.photos.search&api_key=${apikey}&place_id=${placeid}&format=json&nojsoncallback=1&per_page=20`;
 
-    $.getJSON(rootUrl+apiPlacesUrl, function(json) {
-      var photos = json.photos.photo;
+    $.getJSON(rootUrl+apiPlacesUrl, function(list) {
+      var photos = list.photos.photo;
       photos.forEach(p => {
         var apiPhotosUrl = `flickr.photos.getSizes&api_key=${apikey}&photo_id=${p.id}&format=json&nojsoncallback=1`;
 
@@ -147,33 +149,34 @@ function displayFlickr(name) {
   }
 }    
 
-function setCityContent(name) {
-  var city = citiesJson.find(c => c.city == name);
-  return `
-  <div class="city-info">
-    <img src="img/coa/${city['coat_of_arms']}" alt="${city.name} Coat of Arms" class="coa" />
+function setCityContent(cityID) {
+	var city = cities.find(c => c.UID == cityID);
+	var country = countries.find(c => c.UID == city.CountryID);
+  return `<div class="city-info">
+    <img src="img/${city['CoaURL']}" alt="${city.Name} Coat of Arms" class="coa" />
     <section>
-      <h2>${city.name} <small>${city.country}</small></h2>
+      <h2>${city.Name} <small>${country.Name}</small></h2>
       <ul>
-        <li><strong>Population</strong> ${city.population}</li>
-        <li><strong>Area</strong> ${city.area} km2</li>
-        <li><strong>Elevation</strong> ${city.elevation} m</li>
-        <li><strong>Coordinates</strong> ${city.coordinates}</li>
-        <li><strong>Currency</strong> ${city.currency}</li>
+        <li><strong>Population</strong> ${city.Population}</li>
+        <li><strong>Area</strong> ${city.Area} km2</li>
+        <li><strong>Elevation</strong> ${city.Elevation} m</li>
+        <li><strong>Coordinates</strong> ${city.Coordinates}</li>
+        <li><strong>Currency</strong> ${country.Currency}</li>
         <li>
           <strong>Website</strong> 
-          <a href="${city.website}" target="_blank">${city.website}</a>
+          <a href="${city.Website}" target="_blank">${city.Website}</a>
         </li>
       </ul>
     </section>
-  </div>`;   
+  </div>
+  `;   
 }
 
-function setPlaceContent(name) {
-	var place = placesJson.find(c => c.name == name);
+function setPlaceContent(id) {
+	var place = placesList.find(c => c.UID == id);
   return `
   <div class="city-info">
-    <img src="img/photos/${place['photo']}" alt="${place.name}" class="photo" />
+    <img src="img/${place.ImageURL}" alt="${place.name}" class="photo" />
     <section>
       <h2>${place.name} <small>${place.type}</small></h2>
       <ul>
@@ -190,29 +193,32 @@ function zoomInit() {
   infowin.close();
   map.setZoom(4);
   map.setCenter(center);
-  displayFlickr('hideAll');
-  displayWeather('hideAll');
+  displayFlickr(null);
+  displayWeather(null);
   displayMarkers('main');
   setSelectedTab(null);
 }
 
-function zoomCity(name, position) {
+function zoomCity(cityID) {
+  var city = cities.find(c => c.UID == cityID);
+  var coords = city.Decimal_coords.split(',');
+  var position = {lat: parseFloat(coords[0]), lng: parseFloat(coords[1])};
   infowin.close();
-  var currentZoom = (name.indexOf('UK') != -1)? 12 : 14;
+  var currentZoom = 12;
   map.setZoom(currentZoom);
   map.setCenter(position);
-  displayMarkers(name);
-  displayWeather(name);
-  displayFlickr(name);
-  setSelectedTab(name);
+  displayMarkers(cityID);
+  displayWeather(city);
+  displayFlickr(city);
+  setSelectedTab(city);
 }
 
-function setSelectedTab(name) {
-  if (!name) {
+function setSelectedTab(city) {
+  if (!city) {
     $('nav.tabs li').removeClass('selected');
   }
   else {
-    var $li = $(`nav.tabs li[data-city="${name}"]`);
+    var $li = $(`nav.tabs li[data-cityid="${city.UID}"]`);
     $li.addClass('selected').siblings('li').removeClass('selected');
   }
 }
@@ -223,9 +229,9 @@ $('nav.tabs').delegate('li', 'click', function(e) {
     var $li = $(this);
     
     if (!$li.is('.selected')) {
-      var cityName = $li.data('city');
-      var city = cities.find(c => c.name == cityName);
-      zoomCity(cityName, city);
+      var cityID = $li.data('cityid');
+      var city = cities.find(c => c.UID == cityID);
+      zoomCity(cityID);
     }
 });
 

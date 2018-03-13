@@ -1,9 +1,9 @@
 <?php
-	include_once 'api.php';
+	include_once 'db-cache.php';
 	include_once 'objects.php';
 	final class Cache
 	{
-		public static $cities, $countries, $images, $places;
+		public static $cities, $countries;
 		
 		public static function Instance()
 		{
@@ -12,8 +12,6 @@
 				$inst = new Cache();
 				Cache::$cities = array();
 				Cache::$countries = array();
-				Cache::$images = array();
-				Cache::$places = array();
 				Cache::getCities();
 				Cache::getCountries();
 			}
@@ -57,6 +55,17 @@
 			}
 		}
 		
+		static function getCountryFromID($countryID)
+		{
+			foreach (Cache::$countries as $country)
+			{
+				if ($country->UID == $countryID)
+				{
+					return $country;
+				}
+			}
+		}
+		
 		static function getTwins($cityID)
 		{
 			$pairedCities = array();
@@ -71,15 +80,6 @@
 			return $pairedCities;
 		}
 		
-		static function getCountryFromID($countryID)
-		{
-			foreach (Cache::$countries as $country)
-			{
-				if ($country->UID == $countryID)
-				{
-					return $country;
-				}
-			}
-		}
+		
 	}
 ?>

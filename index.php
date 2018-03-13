@@ -1,7 +1,10 @@
+<?php
+	require_once ('cache.php');
+	$cache = Cache::Instance();
+?>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <title>Twin Cities</title>
   </head>  
   <body>
@@ -11,7 +14,6 @@
 			<nav>
 				<ul>
 					<?php
-						require_once ('cache.php');
 						$cache = Cache::Instance();
 						
 						foreach(Cache::$cities as $city)
@@ -19,7 +21,7 @@
 							if ($city->Pair == '0')
 							{
 								$currentCountry = Cache::getCountryFromID($city->CountryID);
-								echo '<li name="changeCity" main-city="'.$city->UID.'"><a href="?city='.$city->UID.'">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
+								echo '<li name="changeCity" data-maincity="'.$city->UID.'"><a href="?city='.$city->UID.'">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
 							}
 						}
 					?>
@@ -37,6 +39,7 @@
 					$currentCityID = $_GET['city'];
 					$cache = Cache::Instance();
 					
+					$countries = array();
 					$cities = Cache::getTwins($currentCityID);
 					$currentCity = Cache::getCityFromID($currentCityID);
 					array_unshift($cities, $currentCity);
@@ -44,14 +47,21 @@
 					foreach ($cities as $city)
 					{
 						$currentCountry = Cache::getCountryFromID($city->CountryID);
-						echo '<li city-ID="'.$city->UID.'"><a href="javascript:">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
+						array_push($countries, $currentCountry);
+						echo '<li data-cityid="'.$city->UID.'"><a href="javascript:">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
 					}
 				}
 				else
 				{
+					$cities = [];
 					echo '<li><a href="">Select a city to the left to see pairs.</a></li>';
 				}
+				array_unique($countries, SORT_REGULAR);
 			?>
+			<script type="text/javascript">
+				var cities = <?php echo json_encode($cities, JSON_PRETTY_PRINT) ?>;
+				var countries = <?php echo json_encode($countries, JSON_PRETTY_PRINT) ?>;
+			</script>
         </ul>
       </nav>
 
@@ -66,8 +76,6 @@
       </div>
       
     </div>
-
-    
     <script>
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
@@ -79,6 +87,5 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7v1ol30fETyVST2Tc9-bhwqDIhAmriUE&callback=initMap">
     </script>
     <script src="script.js"></script>
-
   </body>
 </html>
