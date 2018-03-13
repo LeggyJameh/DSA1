@@ -12,21 +12,15 @@ function getQuery($query) {
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
-
-	$arr = [];
+	
 	$result = $conn->query($query);
 	
-	if ($result->num_rows > 0) {
-	    while($row = $result->fetch_assoc()) {
-	        array_push($arr, $row);
-	    }
-	} 
-	$conn->close();
-
-	return $arr;
+	for ($data = array (); $row = $result->fetch_assoc(); $data[] = $row);
+		
+	return $data;
 }
 
-
+/*
 $result = ["success" => false];
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') 
@@ -54,3 +48,4 @@ else
 header('Content-Type: application/json');
 header('Cache-Control: no-cache');
 echo json_encode($result, JSON_PRETTY_PRINT);
+*/

@@ -24,23 +24,26 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `Population` int(11) DEFAULT NULL,
   `woeid` int(11) DEFAULT NULL,
   `Website` varchar(50) DEFAULT NULL,
+  `Pair` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UID`),
   KEY `CountryID` (`CountryID`),
   KEY `CoaID` (`CoaID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table twincities.cities: ~3 rows (approximately)
+DELETE FROM `cities`;
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT INTO `cities` (`UID`, `Area`, `CoaID`, `Coordinates`, `CountryID`, `Decimal_coords`, `Elevation`, `Name`, `Population`, `woeid`, `Website`) VALUES
-	(1, 7.37, 1, '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/'),
-	(2, 163.77, 2, '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/'),
-	(3, 2.3, 3, '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/');
+INSERT INTO `cities` (`UID`, `Area`, `CoaID`, `Coordinates`, `CountryID`, `Decimal_coords`, `Elevation`, `Name`, `Population`, `woeid`, `Website`, `Pair`) VALUES
+	(1, 7.37, 1, '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/', 0),
+	(2, 163.77, 2, '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/', 1),
+	(3, 2.3, 3, '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 1);
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.countries
 CREATE TABLE IF NOT EXISTS `countries` (
   `UID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(15) NOT NULL DEFAULT '',
+  `Name_Short` varchar(3) NOT NULL DEFAULT '',
   `Population` int(11) NOT NULL DEFAULT '0',
   `Language` varchar(15) NOT NULL DEFAULT '',
   `Currency` varchar(15) NOT NULL DEFAULT '',
@@ -58,11 +61,12 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table twincities.countries: ~3 rows (approximately)
+DELETE FROM `countries`;
 /*!40000 ALTER TABLE `countries` DISABLE KEYS */;
-INSERT INTO `countries` (`UID`, `Name`, `Population`, `Language`, `Currency`, `Geo_Location`, `FlagID`, `CoaID`, `WOE_ID`, `Total_Area`, `Time_Zone`, `Photo_url`, `Wiki_url`) VALUES
-	(1, 'United Kingdom', 65640000, 'English', 'GBP', '46.3543038,-5.3732799', 4, 7, 23424975, 242495, 'UTC', '', 'https://en.wikipedia.org/wiki/United_Kingdom'),
-	(2, 'Germany', 82670000, 'German', 'EUR', '51.0968057,5.9675996', 5, 8, 23424829, 357168, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Germany'),
-	(3, 'Malta', 436947, 'Maltese', 'EUR', '35.9421244,14.098163', 6, 9, 23424897, 316, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Malta');
+INSERT INTO `countries` (`UID`, `Name`, `Name_Short`, `Population`, `Language`, `Currency`, `Geo_Location`, `FlagID`, `CoaID`, `WOE_ID`, `Total_Area`, `Time_Zone`, `Photo_url`, `Wiki_url`) VALUES
+	(1, 'United Kingdom', 'UK', 65640000, 'English', 'GBP', '46.3543038,-5.3732799', 4, 7, 23424975, 242495, 'UTC', '', 'https://en.wikipedia.org/wiki/United_Kingdom'),
+	(2, 'Germany', 'DE', 82670000, 'German', 'EUR', '51.0968057,5.9675996', 5, 8, 23424829, 357168, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Germany'),
+	(3, 'Malta', 'MT', 436947, 'Maltese', 'EUR', '35.9421244,14.098163', 6, 9, 23424897, 316, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Malta');
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.images
@@ -74,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `images` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table twincities.images: ~30 rows (approximately)
+DELETE FROM `images`;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
 INSERT INTO `images` (`UID`, `url`, `desc`) VALUES
 	(1, 'Pembroke-UK.jpg', 'pembroke uk coat of arms'),
@@ -125,6 +130,7 @@ CREATE TABLE IF NOT EXISTS `places` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table twincities.places: ~21 rows (approximately)
+DELETE FROM `places`;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `originated`, `ImageID`, `type`, `website`) VALUES
 	(1, 1, 'A medieval castle. Birthplace of Henry VII', '51.6769031,-4.9227225', 'Pembroke Castle', '1093', 10, 'Landmark', 'http://pembroke-castle.co.uk/'),
@@ -158,6 +164,7 @@ CREATE TABLE IF NOT EXISTS `twins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table twincities.twins: ~2 rows (approximately)
+DELETE FROM `twins`;
 /*!40000 ALTER TABLE `twins` DISABLE KEYS */;
 INSERT INTO `twins` (`City1_ID`, `City2_ID`) VALUES
 	(1, 2),

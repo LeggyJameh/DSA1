@@ -10,8 +10,19 @@
 		<div id="citySelectNav">
 			<nav>
 				<ul>
-					<li main-city="1"><a href="javascript:">Pembroke, Wales</a></li>
-					<li main-city="2"><a href="javascript:">Somewhere else</a></li>
+					<?php
+						require_once ('cache.php');
+						$cache = Cache::Instance();
+						
+						foreach(Cache::$cities as $city)
+						{
+							if ($city->Pair == '0')
+							{
+								$currentCountry = Cache::getCountryFromID($city->CountryID);
+								echo '<li name="changeCity" main-city="'.$city->UID.'"><a href="?city='.$city->UID.'">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
+							}
+						}
+					?>
 				</ul>
 			</nav>
 		</div>
@@ -21,9 +32,26 @@
         <img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge" title="reset map">
 		<div class="title">Pairs:</div>
         <ul>
-            <li data-city="Pembroke/UK"><a href="javascript:">Pembroke, Wales</a></li>
-            <li data-city="Bergen/DE"><a href="javascript:">Bergen, Germany</a></li>
-            <li data-city="Pembroke/MT"><a href="javascript:">Pembroke, Malta</a></li>
+			<?php
+				if (!empty($_GET['city'])) {
+					$currentCityID = $_GET['city'];
+					$cache = Cache::Instance();
+					
+					$cities = Cache::getTwins($currentCityID);
+					$currentCity = Cache::getCityFromID($currentCityID);
+					array_unshift($cities, $currentCity);
+					
+					foreach ($cities as $city)
+					{
+						$currentCountry = Cache::getCountryFromID($city->CountryID);
+						echo '<li city-ID="'.$city->UID.'"><a href="javascript:">'.$city->Name.' / '.$currentCountry->Name_Short.'</a></li>';
+					}
+				}
+				else
+				{
+					echo '<li><a href="">Select a city to the left to see pairs.</a></li>';
+				}
+			?>
         </ul>
       </nav>
 
