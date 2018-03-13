@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Cities</title>
+  </head>
+  <body>
+    
+    <div class="content">
+      <nav class="tabs">
+        <img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge">
+        <ul>
+            <li class="selected"><a href="javascript:">Pembroke, Wales</a></li>
+            <li><a href="javascript:">Bergen, Germany</a></li>
+            <li><a href="javascript:">Pembroke, Malta</a></li>
+        </ul>
+      </nav>
+
+      <div id="map"></div>
+
+      <div class="weather">
+        <div class="openweathermap-widget" id="openweathermap-31602"></div>
+        <div class="openweathermap-widget" id="openweathermap-12833291"></div>
+        <div class="openweathermap-widget" id="openweathermap-10645040"></div>
+      </div>
+      
+    </div>
+
+    
+    <script>
+      window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  
+      window.myWidgetParam.push({
+        id: 15,
+        cityid: '2640503',//2563191
+        appid: 'bd5e378503939ddaee76f12ad7a97608',
+        units: 'metric',
+        containerid: 'openweathermap-31602',  
+      });
+
+      window.myWidgetParam.push({
+        id: 15,
+        cityid: '2950622',
+        appid: 'bd5e378503939ddaee76f12ad7a97608',
+        units: 'metric',
+        containerid: 'openweathermap-12833291',  
+      });
+
+      window.myWidgetParam.push({
+        id: 15,
+        cityid: '2563191',
+        appid: 'bd5e378503939ddaee76f12ad7a97608',
+        units: 'metric',
+        containerid: 'openweathermap-10645040',  
+      });    
+
+      (function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.charset = "utf-8";
+        script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(script, s);  
+      })();
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7v1ol30fETyVST2Tc9-bhwqDIhAmriUE&callback=initMap">
+    </script>
+    <script src="script2.js"></script>
+
+  </body>
+</html>
