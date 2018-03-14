@@ -1,29 +1,93 @@
-var markers = [], map, infowin, citiesList = [], placesList = [];
-
+var markers = [], map, infowin, cities = [], places = [], countries = [], feedXML;
+var loaded = 0;
 var center = {lat: 48.8588377, lng: 2.2770202};
 
-function loadCities()
+function loadFromCache()
 {
-	citiesList = [];
-	if (typeof cities != 'undefined')
-	{
-		cities.forEach(function(item) {
+	loadCitiesFromCache();
+	loadPlacesFromCache();
+	loadCountriesFromCache();
+}
+
+function loadCitiesFromCache()
+{
+	$.post("api.php", {method:'cities'} , function(response) {
+		var citiesList = response.data;
+		citiesList.forEach(function(item) {
 			var coords = item.Decimal_coords.split(',');
-			citiesList.push({
-				id: item.UID,
+			cities.push({
+				ID: item.UID,
+				Area: item.Area,
+				CoaURL: item.CoaURL,
+				Coordinates: item.Coordinates,
 				CountryID: item.CountryID,
-				name: item.name,
+				Elevation: item.Elevation,
+				name: item.Name,
+				Population: item.Population,
+				woeid: item.woeid,
+				Website: item.Website,
+				flickr_id: item.flickr_id,
 				lat: parseFloat(coords[0]),
 				lng: parseFloat(coords[1]),
 				cluster: 'main'
-			})
+			});
 		});
+		finishedLoading();
+	});
+}
+
+function loadPlacesFromCache()
+{
+	$.post("api.php", {method:'places'} , function(response) {
+		var placesList = response.data;
+		placesList.forEach(function(item) {
+			var coords = item.geolocation.split(',');
+			places.push({
+				ID: item.UID,
+				CityID: item.CityID,
+				description: item.description,
+				name: item.name,
+				originated: item.originated,
+				ImageURL: item.ImageURL,
+				type: item.type,
+				website: item.website,
+				lat: parseFloat(coords[0]),
+				lng: parseFloat(coords[1]),
+				cluster: item.CityID
+			});
+		});
+		finishedLoading();
+	});
+}
+
+function loadCountriesFromCache()
+{
+	$.post("api.php", {method:'countries'} , function(response) {
+		countries = response.data;
+		finishedLoading();	
+	});
+}
+
+function finishedLoading()
+{
+	if (loaded >= 2)
+	{
+		var placesList = places;
+		cities.forEach(function(item) {
+			placesList.push(item);
+		});
+		
+		setMarkers(map, placesList);
+	}
+	else
+	{
+		loaded++;
 	}
 }
 
 function initMap() {
-	loadCities();
-  map = new google.maps.Map(document.getElementById('map'), {
+	loadFromCache();
+	map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: center
   });
@@ -32,80 +96,76 @@ function initMap() {
     var currentZoom = map.getZoom();
     if (currentZoom < 6) {
       infowin.close();
-      displayFlickr('hideAll');
-      displayWeather('hideAll');
-    	displayMarkers('main');
+      displayFlickr(null);
+      displayWeather(null);
+      displayMarkers('main');
       setSelectedTab(null);
     }
   });
 
-
   infowin = new google.maps.InfoWindow({ content: "" });
-
- // get points of interest
-  $.post("api.php", {method:'places'} , function(response) {
-    placesList = response.data;
-    var places = citiesList;
-    placesList.forEach(function(item) {
-    	var coords = item.geolocation.split(',');
-    	places.push({
-    		name: item.name,
-    		cluster: item.CityID,
-			id: item.UID,
-    		lat: parseFloat(coords[0]),
-    		lng: parseFloat(coords[1])
-    	})
+  
+$.ajax({
+    type: "POST",
+    url: "api.php",
+    data: {method:'feed'},
+    dataType:"xml"
+  })
+  .then(function(data) {
+    var $feed = $('.feed');
+    $(data).find("item").each(function () { // or "item" or whatever suits your feed
+      var el = $(this);
+      var html = `
+        <h3><a href="${el.find("link").text() || '#'}" target="_blank">${el.find("title").text()}</a></h3>
+        <small>${el.find("pubDate").text()}</small>
+        <article>${el.find("description").text()}</article>
+      `;
+      $feed.append(html);
     });
-	
-    setMarkers(map, places);
-  });
 
-  $.post("api.php", {method:'cities'} , function(response) {
-    citiesList = response.data;
+    $('.feedbar header').text($(data).find('title')[0].textContent);
   });  
 }
 
-function setMarkers(map, data) {
-	for(var i in data) {
-    var place = data[i];
-  
-    var pos = {lat:place.lat, lng:place.lng};
-    
-    var mk = new google.maps.Marker({
-      position: pos,
-      map: map,
-      title: place.id
-    });
+function setMarkers(map, places) {
+	places.forEach(function(place) {
+		var pos = {lat:place.lat, lng:place.lng};
+		
+		var mk = new google.maps.Marker({
+		  position: pos,
+		  map: map,
+		  title: place.name
+		});
+		
+		if(place.cluster == 'main') {
+			mk.addListener('click', function(e) { 
+			zoomCity(place.ID); 
+		  });
 
-    if(place.cluster == 'main') {
-      mk.addListener('click', function(e) { 
-        zoomCity(this.title, this.getPosition()); 
-      });
+			mk.addListener('mouseover', function(e) {
+				infowin.setContent(setCityContent(place.ID));
+			infowin.open(map, this);
+			});
+		}
+		else {
+			mk.addListener('click', function(e) {
+				infowin.setContent(setPlaceContent(place.ID));
+			infowin.open(map, this);
+			});
+		}
 
-	    mk.addListener('mouseover', function(e) {
-	    	infowin.setContent(setCityContent(this.title));
-        infowin.open(map, this);
-	    });
-    }
-    else {
-    	mk.addListener('click', function(e) {
-	    	infowin.setContent(setPlaceContent(this.title));
-        infowin.open(map, this);
-	    });
-    }
+		mk.category = place.cluster;
+		mk.setVisible(place.cluster == 'main');
 
-    mk.category = place.cluster;
-    mk.setVisible(place.cluster == 'main');
-
-    markers.push(mk);
-  }
+		markers.push(mk);
+  });
 }
 
 
 function displayMarkers(category) {
 	for (var i = 0; i < markers.length; i++)
 	{   
-		if (markers[i].category === category) {
+		if (markers[i].category == category) {
 			markers[i].setVisible(true);
 		} 
 		else 
@@ -150,12 +210,12 @@ function displayFlickr(city) {
 }    
 
 function setCityContent(cityID) {
-	var city = cities.find(c => c.UID == cityID);
+	var city = cities.find(c => c.ID == cityID);
 	var country = countries.find(c => c.UID == city.CountryID);
   return `<div class="city-info">
-    <img src="img/${city['CoaURL']}" alt="${city.Name} Coat of Arms" class="coa" />
+    <img src="img/${city['CoaURL']}" alt="${city.name} Coat of Arms" class="coa" />
     <section>
-      <h2>${city.Name} <small>${country.Name}</small></h2>
+      <h2>${city.name} <small>${country.Name}</small></h2>
       <ul>
         <li><strong>Population</strong> ${city.Population}</li>
         <li><strong>Area</strong> ${city.Area} km2</li>
@@ -173,7 +233,7 @@ function setCityContent(cityID) {
 }
 
 function setPlaceContent(id) {
-	var place = placesList.find(c => c.UID == id);
+	var place = places.find(c => c.ID == id);
   return `
   <div class="city-info">
     <img src="img/${place.ImageURL}" alt="${place.name}" class="photo" />
@@ -200,17 +260,19 @@ function zoomInit() {
 }
 
 function zoomCity(cityID) {
-  var city = cities.find(c => c.UID == cityID);
-  var coords = city.Decimal_coords.split(',');
-  var position = {lat: parseFloat(coords[0]), lng: parseFloat(coords[1])};
-  infowin.close();
-  var currentZoom = 12;
-  map.setZoom(currentZoom);
-  map.setCenter(position);
-  displayMarkers(cityID);
-  displayWeather(city);
-  displayFlickr(city);
-  setSelectedTab(city);
+  var city = cities.find(c => c.ID == cityID);
+  if (typeof(city) != "undefined")
+  {
+	  var position = {lat: city.lat, lng: city.lng};
+	  infowin.close();
+	  var currentZoom = 12;
+	  map.setZoom(currentZoom);
+	  map.setCenter(position);
+	  displayMarkers(cityID);
+	  displayWeather(city);
+	  displayFlickr(city);
+	  setSelectedTab(city);
+  }
 }
 
 function setSelectedTab(city) {
@@ -218,7 +280,7 @@ function setSelectedTab(city) {
     $('nav.tabs li').removeClass('selected');
   }
   else {
-    var $li = $(`nav.tabs li[data-cityid="${city.UID}"]`);
+    var $li = $(`nav.tabs li[data-cityid="${city.ID}"]`);
     $li.addClass('selected').siblings('li').removeClass('selected');
   }
 }
@@ -230,7 +292,6 @@ $('nav.tabs').delegate('li', 'click', function(e) {
     
     if (!$li.is('.selected')) {
       var cityID = $li.data('cityid');
-      var city = cities.find(c => c.UID == cityID);
       zoomCity(cityID);
     }
 });

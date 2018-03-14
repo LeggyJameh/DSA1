@@ -1,6 +1,6 @@
 <?php
 
-function getQuery($query) {
+function executeQuery($query) {
 	$servername = "localhost";
 	$username = "root";
 	$password = "";

@@ -31,15 +31,15 @@
 	</div>
     <div class="content">
       <nav class="tabs">
-        <img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge" title="reset map">
 		<div class="title">Pairs:</div>
         <ul>
 			<?php
+				$countries = array();
 				if (!empty($_GET['city'])) {
 					$currentCityID = $_GET['city'];
+					setcookie("cityID", $currentCityID, time()+3600);
 					$cache = Cache::Instance();
 					
-					$countries = array();
 					$cities = Cache::getTwins($currentCityID);
 					$currentCity = Cache::getCityFromID($currentCityID);
 					array_unshift($cities, $currentCity);
@@ -58,11 +58,8 @@
 				}
 				array_unique($countries, SORT_REGULAR);
 			?>
-			<script type="text/javascript">
-				var cities = <?php echo json_encode($cities, JSON_PRETTY_PRINT) ?>;
-				var countries = <?php echo json_encode($countries, JSON_PRETTY_PRINT) ?>;
-			</script>
         </ul>
+		<img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge" title="reset map">
       </nav>
 
       <div id="map"></div>
@@ -76,6 +73,10 @@
       </div>
       
     </div>
+	<div class="feedbar">
+		<header>RSS Feed</header>
+		<div class="feed"></div>
+	</div>
     <script>
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
