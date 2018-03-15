@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.7.4
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Mar 15, 2018 at 12:05 PM
+- Server version: 10.1.30-MariaDB
+- PHP Version: 7.2.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="twincities" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="cities">
+                CREATE TABLE `cities` (
+                  `UID` int(11) NOT NULL AUTO_INCREMENT,
+                  `Area` float DEFAULT NULL,
+                  `CoaURL` text,
+                  `Coordinates` varchar(30) DEFAULT NULL,
+                  `CountryID` int(11) NOT NULL DEFAULT '-1',
+                  `Decimal_coords` varchar(25) DEFAULT NULL,
+                  `Elevation` int(11) DEFAULT NULL,
+                  `Name` varchar(15) DEFAULT NULL,
+                  `Population` int(11) DEFAULT NULL,
+                  `woeid` int(11) DEFAULT NULL,
+                  `Website` text,
+                  `flickr_id` varchar(50) DEFAULT NULL,
+                  `Pair` int(1) NOT NULL DEFAULT '0',
+                  PRIMARY KEY (`UID`),
+                  KEY `CountryID` (`CountryID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="countries">
+                CREATE TABLE `countries` (
+                  `UID` int(11) NOT NULL AUTO_INCREMENT,
+                  `Name` varchar(15) NOT NULL DEFAULT '',
+                  `Name_Short` varchar(3) NOT NULL DEFAULT '',
+                  `Population` int(11) NOT NULL DEFAULT '0',
+                  `Language` varchar(15) NOT NULL DEFAULT '',
+                  `Currency` varchar(15) NOT NULL DEFAULT '',
+                  `Geo_Location` varchar(25) NOT NULL DEFAULT '',
+                  `FlagURL` text NOT NULL,
+                  `CoaURL` text NOT NULL,
+                  `WOE_ID` int(11) NOT NULL DEFAULT '-1',
+                  `Total_Area` int(11) NOT NULL DEFAULT '0',
+                  `Time_Zone` varchar(15) NOT NULL DEFAULT '',
+                  `Photo_url` text NOT NULL,
+                  `Wiki_url` text NOT NULL,
+                  PRIMARY KEY (`UID`),
+                  UNIQUE KEY `WOE_ID` (`WOE_ID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="places">
+                CREATE TABLE `places` (
+                  `UID` int(11) NOT NULL AUTO_INCREMENT,
+                  `CityID` int(11) NOT NULL DEFAULT '-1',
+                  `description` varchar(150) DEFAULT NULL,
+                  `geolocation` varchar(25) DEFAULT NULL,
+                  `name` varchar(45) DEFAULT NULL,
+                  `originated` varchar(5) DEFAULT NULL,
+                  `ImageURL` text NOT NULL,
+                  `type` varchar(20) DEFAULT NULL,
+                  `website` text,
+                  PRIMARY KEY (`UID`),
+                  KEY `CityID` (`CityID`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+            </pma:table>
+            <pma:table name="twins">
+                CREATE TABLE `twins` (
+                  `City1_ID` int(11) NOT NULL DEFAULT '-1',
+                  `City2_ID` int(11) NOT NULL DEFAULT '-1',
+                  KEY `City1_ID_City2_ID` (`City1_ID`,`City2_ID`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'twincities'
+    -->
+    <database name="twincities">
+        <!-- Table cities -->
+        <table name="cities">
+            <column name="UID">1</column>
+            <column name="Area">7.37</column>
+            <column name="CoaURL">Pembroke-UK.jpg</column>
+            <column name="Coordinates">51deg40'34&quot;N, 4deg54'57&quot;W</column>
+            <column name="CountryID">1</column>
+            <column name="Decimal_coords">51.676111, -4.915833</column>
+            <column name="Elevation">77</column>
+            <column name="Name">Pembroke</column>
+            <column name="Population">7552</column>
+            <column name="woeid">31602</column>
+            <column name="Website">http://www.pembroketown.org.uk/</column>
+            <column name="flickr_id">ZIa1xkZQULySiSPLdA</column>
+            <column name="Pair">0</column>
+        </table>
+        <table name="cities">
+            <column name="UID">2</column>
+            <column name="Area">163.77</column>
+            <column name="CoaURL">Bergen.png</column>
+            <column name="Coordinates">52deg48'37&quot;N, 9deg57'40&quot;E</column>
+            <column name="CountryID">2</column>
+            <column name="Decimal_coords">52.810278, 9.961111</column>
+            <column name="Elevation">68</column>
+            <column name="Name">Bergen</column>
+            <column name="Population">13027</column>
+            <column name="woeid">12833291</column>
+            <column name="Website">http://www.bergen-online.de/</column>
+            <column name="flickr_id">qyw9WdNXUb1WY6c</column>
+            <column name="Pair">1</column>
+        </table>
+        <table name="cities">
+            <column name="UID">3</column>
+            <column name="Area">2.3</column>
+            <column name="CoaURL">Pembroke-MT.jpg</column>
+            <column name="Coordinates">35deg55'35&quot;N, 14deg28'51&quot;E</column>
+            <column name="CountryID">3</column>
+            <column name="Decimal_coords">35.926389, 14.480833</column>
+            <column name="Elevation">51</column>
+            <column name="Name">Pembroke</column>
+            <column name="Population">3645</column>
+            <column name="woeid">10645040</column>
+            <column name="Website">http://www.pembroke.gov.mt/</column>
+            <column name="flickr_id">Xb438KZQUrxS60kmdA</column>
+            <column name="Pair">1</column>
+        </table>
+        <!-- Table countries -->
+        <table name="countries">
+            <column name="UID">1</column>
+            <column name="Name">United Kingdom</column>
+            <column name="Name_Short">UK</column>
+            <column name="Population">65640000</column>
+            <column name="Language">English</column>
+            <column name="Currency">GBP</column>
+            <column name="Geo_Location">46.3543038,-5.3732799</column>
+            <column name="FlagURL">uk-flag.png</column>
+            <column name="CoaURL">uk-coa.png</column>
+            <column name="WOE_ID">23424975</column>
+            <column name="Total_Area">242495</column>
+            <column name="Time_Zone">UTC</column>
+            <column name="Photo_url"></column>
+            <column name="Wiki_url">https://en.wikipedia.org/wiki/United_Kingdom</column>
+        </table>
+        <table name="countries">
+            <column name="UID">2</column>
+            <column name="Name">Germany</column>
+            <column name="Name_Short">DE</column>
+            <column name="Population">82670000</column>
+            <column name="Language">German</column>
+            <column name="Currency">EUR</column>
+            <column name="Geo_Location">51.0968057,5.9675996</column>
+            <column name="FlagURL">germany-flag.png</column>
+            <column name="CoaURL">germany-coa.png</column>
+            <column name="WOE_ID">23424829</column>
+            <column name="Total_Area">357168</column>
+            <column name="Time_Zone">UTC+1</column>
+            <column name="Photo_url"></column>
+            <column name="Wiki_url">https://en.wikipedia.org/wiki/Germany</column>
+        </table>
+        <table name="countries">
+            <column name="UID">3</column>
+            <column name="Name">Malta</column>
+            <column name="Name_Short">MT</column>
+            <column name="Population">436947</column>
+            <column name="Language">Maltese</column>
+            <column name="Currency">EUR</column>
+            <column name="Geo_Location">35.9421244,14.098163</column>
+            <column name="FlagURL">malta-flag.png</column>
+            <column name="CoaURL">malta-coa.png</column>
+            <column name="WOE_ID">23424897</column>
+            <column name="Total_Area">316</column>
+            <column name="Time_Zone">UTC+1</column>
+            <column name="Photo_url"></column>
+            <column name="Wiki_url">https://en.wikipedia.org/wiki/Malta</column>
+        </table>
+        <!-- Table places -->
+        <table name="places">
+            <column name="UID">1</column>
+            <column name="CityID">1</column>
+            <column name="description">A medieval castle. Birthplace of Henry VII</column>
+            <column name="geolocation">51.6769031,-4.9227225</column>
+            <column name="name">Pembroke Castle</column>
+            <column name="originated">1093</column>
+            <column name="ImageURL">1.jpg</column>
+            <column name="type">Landmark</column>
+            <column name="website">http://pembroke-castle.co.uk/</column>
+        </table>
+        <table name="places">
+            <column name="UID">2</column>
+            <column name="CityID">1</column>
+            <column name="description">Main train station</column>
+            <column name="geolocation">51.7284586,-5.0074532</column>
+            <column name="name">Pembroke Railway Station</column>
+            <column name="originated">1863</column>
+            <column name="ImageURL">2.jpg</column>
+            <column name="type">Public Transport</column>
+            <column name="website">http://www.nationalrail.co.uk/stations_destinations/PMB.aspx</column>
+        </table>
+        <table name="places">
+            <column name="UID">3</column>
+            <column name="CityID">1</column>
+            <column name="description">Welsh rugby union team</column>
+            <column name="geolocation">51.7285002,-5.0074532</column>
+            <column name="name">Pembroke Rugby Football Club</column>
+            <column name="originated">1896</column>
+            <column name="ImageURL">3.jpg</column>
+            <column name="type">Sports Club</column>
+            <column name="website">http://pembroke.rfc.wales/</column>
+        </table>
+        <table name="places">
+            <column name="UID">4</column>
+            <column name="CityID">1</column>
+            <column name="description">Highly rated pub</column>
+            <column name="geolocation">51.6775255,-4.9201554</column>
+            <column name="name">Watermans Arms</column>
+            <column name="originated">-</column>
+            <column name="ImageURL">4.jpg</column>
+            <column name="type">Public House</column>
+            <column name="website">http://www.watermansarmspembroke.co.uk/</column>
+        </table>
+        <table name="places">
+            <column name="UID">5</column>
+            <column name="CityID">1</column>
+            <column name="description">Grade I listed building</column>
+            <column name="geolocation">51.6753018,-4.9243469</column>
+            <column name="name">Monkton Old Hall</column>
+            <column name="originated">~1350</column>
+            <column name="ImageURL">5.jpg</column>
+            <column name="type">Landmark</column>
+            <column name="website">https://en.wikipedia.org/wiki/Monkton_Old_Hall</column>
+        </table>
+        <table name="places">
+            <column name="UID">6</column>
+            <column name="CityID">1</column>
+            <column name="description">Relaxed hotel offering classic rooms, a cosy bar and a restaurant with wood-beamed ceilings.</column>
+            <column name="geolocation">51.6760237,-4.9200796</column>
+            <column name="name">Old Kings Arms Hotel</column>
+            <column name="originated">1522</column>
+            <column name="ImageURL">6.jpg</column>
+            <column name="type">Accomodation</column>
+            <column name="website">http://www.oldkingsarmshotel.co.uk</column>
+        </table>
+        <table name="places">
+            <column name="UID">7</column>
+            <column name="CityID">1</column>
+            <column name="description">Local school</column>
+            <column name="geolocation">51.6845965,-4.9284571</column>
+            <column name="name">Pembroke School</column>
+            <column name="originated">1972</column>
+            <column name="ImageURL">7.jpg</column>
+            <column name="type">Education</column>
+            <column name="website">https://hwbpluse.wales.gov.uk/en/6684038/Pages/home.aspx</column>
+        </table>
+        <table name="places">
+            <column name="UID">8</column>
+            <column name="CityID">2</column>
+            <column name="description">A farmhouse museum dedicated to local and regional history</column>
+            <column name="geolocation">52.8096001,9.9592813</column>
+            <column name="name">Museum R?mstedthaus</column>
+            <column name="originated">~1650</column>
+            <column name="ImageURL">8.jpg</column>
+            <column name="type">Museum</column>
+            <column name="website">http://www.bergen-online.de/77-0-Museum-Roemstedthaus.hrml</column>
+        </table>
+        <table name="places">
+            <column name="UID">9</column>
+            <column name="CityID">2</column>
+            <column name="description">Tourist information</column>
+            <column name="geolocation">52.80995,9.9605614</column>
+            <column name="name">Tourism Bergen</column>
+            <column name="originated">-</column>
+            <column name="ImageURL">9.jpg</column>
+            <column name="type">Organisation</column>
+            <column name="website">http://www.tourismus-bergen.de/</column>
+        </table>
+        <table name="places">
+            <column name="UID">10</column>
+            <column name="CityID">2</column>
+            <column name="description">Local church</column>
+            <column name="geolocation">52.8089819,9.9602081</column>
+            <column name="name">St. Lambert's Church, Bergen</column>
+            <column name="originated">1826</column>
+            <column name="ImageURL">10.jpg</column>
+            <column name="type">POI</column>
+            <column name="website">http://www.lamberti-bergen.de/Lambertikirche</column>
+        </table>
+        <table name="places">
+            <column name="UID">11</column>
+            <column name="CityID">2</column>
+            <column name="description">Local window maker</column>
+            <column name="geolocation">52.8099461,9.9452406</column>
+            <column name="name">Zink GmbH</column>
+            <column name="originated"></column>
+            <column name="ImageURL">0.png</column>
+            <column name="type">Window company</column>
+            <column name="website">http://www.zink-fenster.de/</column>
+        </table>
+        <table name="places">
+            <column name="UID">12</column>
+            <column name="CityID">2</column>
+            <column name="description">Ice cream parlour</column>
+            <column name="geolocation">52.807424,9.9636833</column>
+            <column name="name">Eiscafe Miriam</column>
+            <column name="originated"></column>
+            <column name="ImageURL">12.jpg</column>
+            <column name="type">Restaurant</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">13</column>
+            <column name="CityID">2</column>
+            <column name="description">Indoor heated pool</column>
+            <column name="geolocation">52.809202,9.9472403</column>
+            <column name="name">Stadtverwaltung Bergen</column>
+            <column name="originated"></column>
+            <column name="ImageURL">13.jpg</column>
+            <column name="type">Swimming Pool</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">14</column>
+            <column name="CityID">2</column>
+            <column name="description">Used for various events including music concerts</column>
+            <column name="geolocation">52.80823,9.9572913</column>
+            <column name="name">Stadthaus</column>
+            <column name="originated"></column>
+            <column name="ImageURL">14.jpg</column>
+            <column name="type">Venue</column>
+            <column name="website">https://www.bergen-online.de/68-0-Stadthaus.html</column>
+        </table>
+        <table name="places">
+            <column name="UID">15</column>
+            <column name="CityID">3</column>
+            <column name="description">A polygonal fort built by the British to defend part of the Victoria Lines
+</column>
+            <column name="geolocation">35.9268796,14.478803</column>
+            <column name="name">Fort Pembroke</column>
+            <column name="originated"></column>
+            <column name="ImageURL">15.jpg</column>
+            <column name="type">Fortress</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">16</column>
+            <column name="CityID">3</column>
+            <column name="description">Monument to wounded ANZAC troops nursed in Malta
+</column>
+            <column name="geolocation">35.9256399,14.4733885</column>
+            <column name="name">Australia Hall</column>
+            <column name="originated"></column>
+            <column name="ImageURL">22.jpg</column>
+            <column name="type">Landmark</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">17</column>
+            <column name="CityID">3</column>
+            <column name="description">Local football club
+</column>
+            <column name="geolocation">35.9308411,14.4720813</column>
+            <column name="name">Melita Football Club</column>
+            <column name="originated"></column>
+            <column name="ImageURL">17.jpg</column>
+            <column name="type">Football Club</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">18</column>
+            <column name="CityID">3</column>
+            <column name="description">Soon to become a museum
+</column>
+            <column name="geolocation">35.927303,14.4817936</column>
+            <column name="name">Pembroke Battery</column>
+            <column name="originated"></column>
+            <column name="ImageURL">18.jpg</column>
+            <column name="type">Historical Place</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">19</column>
+            <column name="CityID">3</column>
+            <column name="description">Tower overlooking Bahar ic-Caghaq
+</column>
+            <column name="geolocation">35.9365984,14.4709146</column>
+            <column name="name">Madliena Tower</column>
+            <column name="originated"></column>
+            <column name="ImageURL">19.jpg</column>
+            <column name="type">Tower</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">20</column>
+            <column name="CityID">3</column>
+            <column name="description">Abandoned holiday complex</column>
+            <column name="geolocation">35.9317494,14.4720553</column>
+            <column name="name">White Rocks</column>
+            <column name="originated"></column>
+            <column name="ImageURL">20.jpg</column>
+            <column name="type">Ghost Town</column>
+            <column name="website"></column>
+        </table>
+        <table name="places">
+            <column name="UID">21</column>
+            <column name="CityID">3</column>
+            <column name="description">Open urban space to built to improve area</column>
+            <column name="geolocation">35.9289509,14.4887602</column>
+            <column name="name">Pembroke Gardens</column>
+            <column name="originated"></column>
+            <column name="ImageURL">23.jpg</column>
+            <column name="type">Garden</column>
+            <column name="website"></column>
+        </table>
+        <!-- Table twins -->
+        <table name="twins">
+            <column name="City1_ID">1</column>
+            <column name="City2_ID">2</column>
+        </table>
+        <table name="twins">
+            <column name="City1_ID">1</column>
+            <column name="City2_ID">3</column>
+        </table>
+    </database>
+</pma_xml_export>
