@@ -1,4 +1,9 @@
 <?php
+/*
+	This php file handles AJAX requests from JScript, and returns data from the cache
+*/
+
+// Public rss feed library
 include 'jsonfeed2rss.php'; // https://gist.github.com/daveajones/be26f5ca9cb7559d0c33549b53323770
 require_once ('cache.php');
 
@@ -6,6 +11,7 @@ $resultAsXML = false;
 $result = ["success" => false];
 $cache = Cache::Instance();
 
+// Returns the cities that are paired with the selected main city, including the main city itself
 function getCurrentCities()
 {
 	$currentCityID = $_COOKIE["cityID"];
@@ -19,8 +25,10 @@ function getCurrentCities()
 	}
 }
 
+// Postback code
 if($_SERVER['REQUEST_METHOD'] === 'POST') 
 {
+	// If the request is for cities...
     if ($_REQUEST['method'] === 'cities') 
     {
 		$cities = getCurrentCities();
@@ -33,6 +41,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 		}
     }
 
+	// If the request is for places...
     else if($_REQUEST['method'] === 'places') 
     {
 		$cities = getCurrentCities();
@@ -56,6 +65,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 		}
     }
 	
+	// If the request is for countries...
 	else if($_REQUEST['method'] === 'countries')
 	{
 		$cities = getCurrentCities();
@@ -76,6 +86,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 		}
 	}
 
+	// If the request is for items for the RSS feed...
     else if($_REQUEST['method'] === 'feed') 
     {
     	$places = Cache::$places;
@@ -131,7 +142,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     }
 
 }
-else 
+else // Otherwise, it's not a request. Go away please....
 {
 	$result["info"] = "Invalid request method, POST only";
 }

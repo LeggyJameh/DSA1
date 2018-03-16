@@ -1,5 +1,9 @@
 <?php
+/* 
+	This file is reserved for database functions that the cache uses.
+*/
 
+// Execute the given query and return any data it returns as an associative array
 function executeQuery($query) {
 	$servername = "localhost";
 	$username = "root";

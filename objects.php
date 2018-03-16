@@ -1,4 +1,9 @@
 <?php
+/* 
+	This php file is just used for the various data objects that will be used for our Object-oriented approach.
+	The properties of each object map perfectly to the structure of the database.
+*/
+
 class City
 {
 	public $UID, $Area, $CoaURL, $Coordinates, $CountryID, $Decimal_coords, $Elevation, $Name, $Population, $woeid, $Website, $flickr_id, $Pair;

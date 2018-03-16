@@ -1,10 +1,19 @@
 <?php
+/*
+	Caching class used for all data storage. At the start of the application, this pulls all necessary data from the database.
+	This class is a simpleton, meaning there is only ever one instance of it.
+	This allows other parts of the application to access data without delays from fetching from the database.
+	This could later be improved to only keep recently accessed data when the database is too big to make
+	storing it all here, simultaneously, unviable.
+*/
+
 	include_once 'db-cache.php';
 	include_once 'objects.php';
 	final class Cache
 	{
 		public static $cities, $countries, $places;
 		
+		// Get the current and -only- instance. If there isn't one, construct one, and return it
 		public static function Instance()
 		{
 			static $inst = null;
@@ -22,8 +31,10 @@
 		
 		private function __construct()
 		{
+			// No need for construction, cache is simpleton.
 		}
 		
+		// Pull all cities from the database
 		static function getCities()
 		{
 			$query = "SELECT * FROM cities";
@@ -35,6 +46,7 @@
 			}
 		}
 		
+		// Pull all countries from the database
 		static function getCountries()
 		{
 			$query = "SELECT * FROM countries";
@@ -46,6 +58,7 @@
 			}
 		}
 		
+		// Pull all places from the database
 		static function getPlaces()
 		{
 			$query = "SELECT * FROM places";
@@ -57,6 +70,7 @@
 			}
 		}
 		
+		// Returns a city object from the given city ID
 		static function getCityFromID($cityID)
 		{
 			foreach (Cache::$cities as $city)
@@ -68,6 +82,7 @@
 			}
 		}
 		
+		// Returns a country object from the given country ID
 		static function getCountryFromID($countryID)
 		{
 			foreach (Cache::$countries as $country)
@@ -79,6 +94,7 @@
 			}
 		}
 		
+		// Returns a place object from the given place ID
 		static function getPlaceFromID($placeID)
 		{
 			foreach (Cache::$places as $place)
@@ -90,12 +106,14 @@
 			}
 		}
 		
+		// Returns a list of places for the given city ID
 		static function getPlacesForCity($CityUID)
 		{
 			$idFilter = new idFilter($CityUID);
 			return array_filter(Cache::$places, array(new IDFilter($CityUID), 'isSame'));
 		}
 		
+		// Returns a list of cities that are pairs of the given city ID
 		static function getTwins($cityID)
 		{
 			$pairedCities = array();
@@ -113,6 +131,7 @@
 		
 	}
 	
+	// Filter class and functions used for getPlacesForCity()
 	class IDFilter
 	{
 		private $UID;

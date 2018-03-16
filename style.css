@@ -3,12 +3,13 @@ html, body {
   margin: 0; 
   padding: 0; 
 }
+
+/* Pair navigation menu stuff */
 nav.tabs {
   position: relative;
   height:40px;
 }
 nav.tabs ul {
-  /*height: 40px;*/
   overflow: hidden; 
   margin: 0;
   padding: 0;
@@ -64,9 +65,12 @@ nav.tabs .title {
   line-height:40px;
 }
 
+/* The google map */
 #map { 
   height: calc(100% - 160px) 
 }
+
+/* Flickr stuff */
 .flickr0 {
   height: 120px;
   background-color: #333;
@@ -81,6 +85,8 @@ nav.tabs .title {
   margin-right: 10px;
   flex: 1;
 }
+
+/* Images! */
 img.coa { 
   width: 180px;
   height: 200px;
@@ -91,6 +97,8 @@ img.photo {
   height: 120px;
   margin-right: 15px;
 }
+
+/* City info content panel */
 .city-info {
   display: flex;
 }
@@ -105,6 +113,7 @@ img.photo {
   display: block;
 }
 
+/* Weather widget positioning */
 .weather {
   position: absolute;
   top: 50px;
@@ -117,6 +126,7 @@ img.photo {
 
 body { display: flex; overflow: hidden; }
 
+/* Main layout stuff */
 .content {
   height: 100%;
   width: calc(90% - 280px);
@@ -130,7 +140,7 @@ body { display: flex; overflow: hidden; }
 	border-right: solid 3px #ffc548;
 }
 
-#citySelectNav {
+.citySelectNav {
 	width:100%;
 	font-family:Helvetica;
 	text-decoration: none;
@@ -144,11 +154,26 @@ body { display: flex; overflow: hidden; }
 	list-style-type:none;
 }
 
-#citySelectNav ul li {
+/* Main city navigation menu stuff */
+nav.mainTabs {
+	width:100%;
+	font-family:Helvetica;
+	text-decoration: none;
+	color: #f5f5f5;
+	overflow: hidden; 
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style-type: none;
+	background-color: #333;
+	list-style-type:none;
+}
+
+nav.mainTabs ul li {
   list-style-type: none;
   float: left;
 }
-#citySelectNav ul li a {
+nav.mainTabs ul li a {
   display: block;
   padding: 10px 0px;
   text-decoration: none;
@@ -156,25 +181,26 @@ body { display: flex; overflow: hidden; }
   font-family: Helvetica;  
   width:100%;
 }
-#citySelectNav ul li.hover a {
+nav.mainTabs ul li.hover a {
   color: #ffc548;
 }
-#citySelectNav ul li.selected a,
-#citySelectNav ul li a:active {
+nav.mainTabs ul li.selected a,
+nav.mainTabsul li a:active {
  color: #ffc548;
  border-bottom: solid 3px #ffc548;  
 }
-#citySelectNav .enlarge {
+nav.mainTabs .enlarge {
   width: 26px;
   position: absolute;
   right: 10px;
   top: 8px;
   cursor: pointer;
 }
-#citySelectNav .enlarge:hover {
+nav.mainTabs .enlarge:hover {
   opacity: 0.6;
 }
 
+/* Title for the main city selection panel */
 .selectPaneTitle {
   width: 100px;
   position: relative;
@@ -190,6 +216,7 @@ body { display: flex; overflow: hidden; }
   line-height:40px;
 }
 
+/* RSS Feed stuff */
 .feedbar {
   width: 280px;
   height: 100%;
