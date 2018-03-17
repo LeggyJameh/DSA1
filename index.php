@@ -40,7 +40,7 @@
       <nav class="tabs">
 		<div class="title">Pairs:</div>
         <ul id="pairList">
-			<li><a href="">Select a city to the left to see pairs.</a></li>
+			<li><a href="javascript:">Select a city to the left to see pairs.</a></li>
         </ul>
 		<img src="img/zoom-out-w.png" alt="enlarge-icon" class="enlarge" title="reset map">
       </nav>

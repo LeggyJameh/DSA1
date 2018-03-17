@@ -15,10 +15,10 @@ $cache = Cache::Instance();
 function getCurrentCities()
 {
 	$currentCityID = $_COOKIE["cityID"];
-	if ($currentCityID != null) {
-			$cities = Cache::getTwins($currentCityID);
-			array_unshift($cities, Cache::getCityFromID($currentCityID));
-			return $cities;
+	if (isset($_COOKIE["cityID"])) {
+		$cities = Cache::getTwins($currentCityID);
+		array_unshift($cities, Cache::getCityFromID($currentCityID));
+		return $cities;
 	}
 	else {
 		return null;

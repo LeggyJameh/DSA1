@@ -1,4 +1,4 @@
-var markers = [], map, infowin, cities = [], places = [], countries = [], feedXML;
+var markers = [], map, infowin, cities = [], places = [], countries = [], feedXML, currentCityID = -1;
 var loaded = 0;
 var center = {lat: 48.8588377, lng: 2.2770202};
 
@@ -13,27 +13,30 @@ function loadFromCache()
 // Loads the cities from the server
 function loadCitiesFromCache()
 {
+	cities = [];
 	$.post("api.php", {method:'cities'} , function(response) {
 		var citiesList = response.data;
-		citiesList.forEach(function(item) {
-			var coords = item.Decimal_coords.split(',');
-			cities.push({
-				ID: item.UID,
-				Area: item.Area,
-				CoaURL: item.CoaURL,
-				Coordinates: item.Coordinates,
-				CountryID: item.CountryID,
-				Elevation: item.Elevation,
-				name: item.Name,
-				Population: item.Population,
-				woeid: item.woeid,
-				Website: item.Website,
-				flickr_id: item.flickr_id,
-				lat: parseFloat(coords[0]),
-				lng: parseFloat(coords[1]),
-				cluster: 'main'
+		if (citiesList != null) {
+			citiesList.forEach(function(item) {
+				var coords = item.Decimal_coords.split(',');
+				cities.push({
+					ID: item.UID,
+					Area: item.Area,
+					CoaURL: item.CoaURL,
+					Coordinates: item.Coordinates,
+					CountryID: item.CountryID,
+					Elevation: item.Elevation,
+					name: item.Name,
+					Population: item.Population,
+					woeid: item.woeid,
+					Website: item.Website,
+					flickr_id: item.flickr_id,
+					lat: parseFloat(coords[0]),
+					lng: parseFloat(coords[1]),
+					cluster: 'main'
+				});
 			});
-		});
+		}
 		finishedLoading();
 	});
 }
@@ -41,24 +44,27 @@ function loadCitiesFromCache()
 // Loads the places of interest from the server
 function loadPlacesFromCache()
 {
+	places = [];
 	$.post("api.php", {method:'places'} , function(response) {
 		var placesList = response.data;
-		placesList.forEach(function(item) {
-			var coords = item.geolocation.split(',');
-			places.push({
-				ID: item.UID,
-				CityID: item.CityID,
-				description: item.description,
-				name: item.name,
-				originated: item.originated,
-				ImageURL: item.ImageURL,
-				type: item.type,
-				website: item.website,
-				lat: parseFloat(coords[0]),
-				lng: parseFloat(coords[1]),
-				cluster: item.CityID
+		if (placesList != null) {
+			placesList.forEach(function(item) {
+				var coords = item.geolocation.split(',');
+				places.push({
+					ID: item.UID,
+					CityID: item.CityID,
+					description: item.description,
+					name: item.name,
+					originated: item.originated,
+					ImageURL: item.ImageURL,
+					type: item.type,
+					website: item.website,
+					lat: parseFloat(coords[0]),
+					lng: parseFloat(coords[1]),
+					cluster: item.CityID
+				});
 			});
-		});
+		}
 		finishedLoading();
 	});
 }
@@ -66,6 +72,7 @@ function loadPlacesFromCache()
 // Loads the countries for the server
 function loadCountriesFromCache()
 {
+	countries = [];
 	$.post("api.php", {method:'countries'} , function(response) {
 		countries = response.data;
 		finishedLoading();	
@@ -76,8 +83,7 @@ function loadCountriesFromCache()
 function finishedLoading()
 {
 	// If everything has loaded...
-	if (loaded >= 2)
-	{
+	if (loaded >= 2) {
 		// Load the map with the new points.
 		var placesList = places;
 		cities.forEach(function(item) {
@@ -85,9 +91,16 @@ function finishedLoading()
 		});
 		
 		setMarkers(map, placesList);
+		
+		var city = cities.find(c => c.ID == currentCityID);
+		if (typeof city != "undefined") {
+			setSelectedMainTab(city);
+			generatePairNav();
+		}
+		
+		loaded = 0;
 	}
-	else // If not everything has loaded, indicate that this one has.
-	{
+	else { // If not everything has loaded, indicate that this one has.
 		loaded++;
 	}
 }
@@ -323,13 +336,10 @@ function setSelectedMainTab(city)
 // Select the given city as the primary city
 function selectMainCity(cityID)
 {
+	markers = [];
 	document.cookie = "cityID=" + cityID;
+	currentCityID = cityID;
 	initMap();
-	var city = cities.find(c => c.ID == cityID);
-	if (typeof city != "undefined") {
-		setSelectedMainTab(city);
-		generatePairNav();
-	}
 }
 
 // Generate the html for the navigation panel for pairs
@@ -342,6 +352,16 @@ function generatePairNav() {
 	});
 	
 	nav.html(html);
+}
+
+function getCookie(cookieName) {
+	match = document.cookie.match(new RegExp(cookieName + '=([^;]+)'));
+	if (match) {
+		return match[1];
+	}
+	else {
+		return null;
+	}
 }
 
 // Event handlers for button presses
@@ -364,5 +384,11 @@ $('nav.mainTabs').delegate('li', 'click', function(e) {
 		selectMainCity(cityID);
 	}
 });
+
+var cityID = getCookie("cityID")
+if (cityID != null) {
+	currentCityID = cityID;
+	selectMainCity(cityID);
+}
 
 

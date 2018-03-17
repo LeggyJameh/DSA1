@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `CountryID` int(11) NOT NULL DEFAULT '-1',
   `Decimal_coords` varchar(25) DEFAULT NULL,
   `Elevation` int(11) DEFAULT NULL,
-  `Name` varchar(15) DEFAULT NULL,
+  `Name` varchar(20) DEFAULT NULL,
   `Population` int(11) DEFAULT NULL,
   `woeid` int(11) DEFAULT NULL,
   `Website` text,
@@ -29,15 +29,20 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `Pair` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`UID`),
   KEY `CountryID` (`CountryID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.cities: ~3 rows (approximately)
+-- Dumping data for table twincities.cities: ~7 rows (approximately)
 DELETE FROM `cities`;
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
 INSERT INTO `cities` (`UID`, `Area`, `CoaURL`, `Coordinates`, `CountryID`, `Decimal_coords`, `Elevation`, `Name`, `Population`, `woeid`, `Website`, `flickr_id`, `Pair`) VALUES
 	(1, 7.37, 'Pembroke-UK.jpg', '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/', 'ZIa1xkZQULySiSPLdA', 0),
 	(2, 163.77, 'Bergen.png', '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/', 'qyw9WdNXUb1WY6c', 1),
-	(3, 2.3, 'Pembroke-MT.jpg', '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 'Xb438KZQUrxS60kmdA', 1);
+	(3, 2.3, 'Pembroke-MT.jpg', '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 'Xb438KZQUrxS60kmdA', 1),
+	(4, 0, 'oujda-coa.png', '34.6815864,-1.9097781', 4, '34.6815864,-1.9097781', 470, 'Oujda', 494252, 1538412, 'http://www.oriental.ma/', NULL, 1),
+	(5, 41.67, 'trowbridge-coa.jpg', '51.3191329,-2.2409817', 1, '51.3191329,-2.2409817', 42, 'Trowbridge', 33108, 38271, 'https://www.trowbridge.gov.uk/', NULL, 0),
+	(6, 70.3, 'leer-coa.png', '53.2428733,7.4515023', 2, '53.2428733,7.4515023', 3, 'Leer', 34042, 12596996, 'https://www.leer.de/', NULL, 1),
+	(7, 1.85, 'charenton-le-pont-coa.png', '48.8227154,2.4030234', 5, '48.8227154,2.4030234', 35, 'Charenton-le-Pont', 28679, 55863443, 'http://www.charenton.fr/', NULL, 1),
+	(8, 79.82, 'elblag-coa.png', '54.1798838,19.4162031', 6, '54.1798838,19.4162031', 21, 'Elblag', 124257, 492781, 'http://www.elblag.eu/', NULL, 1);
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.countries
@@ -52,22 +57,25 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `Geo_Location` varchar(25) NOT NULL DEFAULT '',
   `FlagURL` text NOT NULL,
   `CoaURL` text NOT NULL,
-  `WOE_ID` int(11) NOT NULL DEFAULT '-1',
+  `WOE_ID` int(11) DEFAULT NULL,
   `Total_Area` int(11) NOT NULL DEFAULT '0',
   `Time_Zone` varchar(15) NOT NULL DEFAULT '',
   `Photo_url` text NOT NULL,
   `Wiki_url` text NOT NULL,
   PRIMARY KEY (`UID`),
   UNIQUE KEY `WOE_ID` (`WOE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.countries: ~3 rows (approximately)
+-- Dumping data for table twincities.countries: ~6 rows (approximately)
 DELETE FROM `countries`;
 /*!40000 ALTER TABLE `countries` DISABLE KEYS */;
 INSERT INTO `countries` (`UID`, `Name`, `Name_Short`, `Population`, `Language`, `Currency`, `Geo_Location`, `FlagURL`, `CoaURL`, `WOE_ID`, `Total_Area`, `Time_Zone`, `Photo_url`, `Wiki_url`) VALUES
 	(1, 'United Kingdom', 'UK', 65640000, 'English', 'GBP', '46.3543038,-5.3732799', 'uk-flag.png', 'uk-coa.png', 23424975, 242495, 'UTC', '', 'https://en.wikipedia.org/wiki/United_Kingdom'),
 	(2, 'Germany', 'DE', 82670000, 'German', 'EUR', '51.0968057,5.9675996', 'germany-flag.png', 'germany-coa.png', 23424829, 357168, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Germany'),
-	(3, 'Malta', 'MT', 436947, 'Maltese', 'EUR', '35.9421244,14.098163', 'malta-flag.png', 'malta-coa.png', 23424897, 316, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Malta');
+	(3, 'Malta', 'MT', 436947, 'Maltese', 'EUR', '35.9421244,14.098163', 'malta-flag.png', 'malta-coa.png', 23424897, 316, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Malta'),
+	(4, 'Morocco', 'MA', 33848242, 'Moroccan Arabic', 'MAD', '30.5126737,-25.2569004', 'morocco-flag.png', 'morocco-coa.png', 23424893, 710850, 'UTC', '', 'https://en.wikipedia.org/wiki/Morocco'),
+	(5, 'France', 'FR', 67201000, 'French', 'EUR', '44.8386812,-15.8264018', 'france-flag.png', 'france-coa.png', 23424819, 640679, 'UTC+1', '', 'https://en.wikipedia.org/wiki/France'),
+	(6, 'Poland', 'PL', 38422346, 'Polish', 'PLN', '51.6266388,10.1888941', 'poland-flag.png', 'poland-coa.png', 23424923, 312679, 'UTC+1', '', 'https://en.wikipedia.org/wiki/Poland');
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.places
@@ -121,12 +129,16 @@ CREATE TABLE IF NOT EXISTS `twins` (
   KEY `City1_ID_City2_ID` (`City1_ID`,`City2_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.twins: ~2 rows (approximately)
+-- Dumping data for table twincities.twins: ~6 rows (approximately)
 DELETE FROM `twins`;
 /*!40000 ALTER TABLE `twins` DISABLE KEYS */;
 INSERT INTO `twins` (`City1_ID`, `City2_ID`) VALUES
 	(1, 2),
-	(1, 3);
+	(1, 3),
+	(5, 4),
+	(5, 6),
+	(5, 7),
+	(5, 8);
 /*!40000 ALTER TABLE `twins` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
