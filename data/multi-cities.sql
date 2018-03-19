@@ -27,22 +27,23 @@ CREATE TABLE IF NOT EXISTS `cities` (
   `Website` text,
   `flickr_id` varchar(50) DEFAULT NULL,
   `Pair` int(1) NOT NULL DEFAULT '0',
+  `WeatherURL` text NOT NULL,
   PRIMARY KEY (`UID`),
   KEY `CountryID` (`CountryID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.cities: ~7 rows (approximately)
+-- Dumping data for table twincities.cities: ~8 rows (approximately)
 DELETE FROM `cities`;
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
-INSERT INTO `cities` (`UID`, `Area`, `CoaURL`, `Coordinates`, `CountryID`, `Decimal_coords`, `Elevation`, `Name`, `Population`, `woeid`, `Website`, `flickr_id`, `Pair`) VALUES
-	(1, 7.37, 'Pembroke-UK.jpg', '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/', 'ZIa1xkZQULySiSPLdA', 0),
-	(2, 163.77, 'Bergen.png', '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/', 'qyw9WdNXUb1WY6c', 1),
-	(3, 2.3, 'Pembroke-MT.jpg', '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 'Xb438KZQUrxS60kmdA', 1),
-	(4, 0, 'oujda-coa.png', '34.6815864,-1.9097781', 4, '34.6815864,-1.9097781', 470, 'Oujda', 494252, 1538412, 'http://www.oriental.ma/', NULL, 1),
-	(5, 41.67, 'trowbridge-coa.jpg', '51.3191329,-2.2409817', 1, '51.3191329,-2.2409817', 42, 'Trowbridge', 33108, 38271, 'https://www.trowbridge.gov.uk/', NULL, 0),
-	(6, 70.3, 'leer-coa.png', '53.2428733,7.4515023', 2, '53.2428733,7.4515023', 3, 'Leer', 34042, 12596996, 'https://www.leer.de/', NULL, 1),
-	(7, 1.85, 'charenton-le-pont-coa.png', '48.8227154,2.4030234', 5, '48.8227154,2.4030234', 35, 'Charenton-le-Pont', 28679, 55863443, 'http://www.charenton.fr/', NULL, 1),
-	(8, 79.82, 'elblag-coa.png', '54.1798838,19.4162031', 6, '54.1798838,19.4162031', 21, 'Elblag', 124257, 492781, 'http://www.elblag.eu/', NULL, 1);
+INSERT INTO `cities` (`UID`, `Area`, `CoaURL`, `Coordinates`, `CountryID`, `Decimal_coords`, `Elevation`, `Name`, `Population`, `woeid`, `Website`, `flickr_id`, `Pair`, `WeatherURL`) VALUES
+	(1, 7.37, 'Pembroke-UK.jpg', '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/', 'ZIa1xkZQULySiSPLdA', 0, 'https://forecast7.com/en/51d67n4d91/pembroke/'),
+	(2, 163.77, 'Bergen.png', '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/', 'qyw9WdNXUb1WY6c', 1, 'https://forecast7.com/en/52d819d96/bergen/'),
+	(3, 2.3, 'Pembroke-MT.jpg', '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 'Xb438KZQUrxS60kmdA', 1, 'https://forecast7.com/en/35d9314d48/pembroke/'),
+	(4, 0, 'oujda-coa.png', '34.6815864,-1.9097781', 4, '34.6815864,-1.9097781', 470, 'Oujda', 494252, 1538412, 'http://www.oriental.ma/', NULL, 1, 'https://forecast7.com/en/34d68n1d90/oujda/'),
+	(5, 41.67, 'trowbridge-coa.jpg', '51.3191329,-2.2409817', 1, '51.3191329,-2.2409817', 42, 'Trowbridge', 33108, 38271, 'https://www.trowbridge.gov.uk/', NULL, 0, 'https://forecast7.com/en/51d32n2d21/trowbridge/'),
+	(6, 70.3, 'leer-coa.png', '53.2428733,7.4515023', 2, '53.2428733,7.4515023', 3, 'Leer', 34042, 12596996, 'https://www.leer.de/', NULL, 1, 'https://forecast7.com/en/53d247d47/leer/'),
+	(7, 1.85, 'charenton-le-pont-coa.png', '48.8227154,2.4030234', 5, '48.8227154,2.4030234', 35, 'Charenton-le-Pont', 28679, 55863443, 'http://www.charenton.fr/', NULL, 1, 'https://forecast7.com/en/48d822d42/charenton-le-pont/'),
+	(8, 79.82, 'elblag-coa.png', '54.1798838,19.4162031', 6, '54.1798838,19.4162031', 21, 'Elblag', 124257, 492781, 'http://www.elblag.eu/', NULL, 1, 'https://forecast7.com/en/54d1619d40/elblag/');
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.countries
