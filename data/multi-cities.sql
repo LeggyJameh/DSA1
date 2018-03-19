@@ -39,11 +39,11 @@ INSERT INTO `cities` (`UID`, `Area`, `CoaURL`, `Coordinates`, `CountryID`, `Deci
 	(1, 7.37, 'Pembroke-UK.jpg', '51deg40\'34"N, 4deg54\'57"W', 1, '51.676111, -4.915833', 77, 'Pembroke', 7552, 31602, 'http://www.pembroketown.org.uk/', 'ZIa1xkZQULySiSPLdA', 0, 'https://forecast7.com/en/51d67n4d91/pembroke/'),
 	(2, 163.77, 'Bergen.png', '52deg48\'37"N, 9deg57\'40"E', 2, '52.810278, 9.961111', 68, 'Bergen', 13027, 12833291, 'http://www.bergen-online.de/', 'qyw9WdNXUb1WY6c', 1, 'https://forecast7.com/en/52d819d96/bergen/'),
 	(3, 2.3, 'Pembroke-MT.jpg', '35deg55\'35"N, 14deg28\'51"E', 3, '35.926389, 14.480833', 51, 'Pembroke', 3645, 10645040, 'http://www.pembroke.gov.mt/', 'Xb438KZQUrxS60kmdA', 1, 'https://forecast7.com/en/35d9314d48/pembroke/'),
-	(4, 0, 'oujda-coa.png', '34.6815864,-1.9097781', 4, '34.6815864,-1.9097781', 470, 'Oujda', 494252, 1538412, 'http://www.oriental.ma/', NULL, 1, 'https://forecast7.com/en/34d68n1d90/oujda/'),
-	(5, 41.67, 'trowbridge-coa.jpg', '51.3191329,-2.2409817', 1, '51.3191329,-2.2409817', 42, 'Trowbridge', 33108, 38271, 'https://www.trowbridge.gov.uk/', NULL, 0, 'https://forecast7.com/en/51d32n2d21/trowbridge/'),
-	(6, 70.3, 'leer-coa.png', '53.2428733,7.4515023', 2, '53.2428733,7.4515023', 3, 'Leer', 34042, 12596996, 'https://www.leer.de/', NULL, 1, 'https://forecast7.com/en/53d247d47/leer/'),
-	(7, 1.85, 'charenton-le-pont-coa.png', '48.8227154,2.4030234', 5, '48.8227154,2.4030234', 35, 'Charenton-le-Pont', 28679, 55863443, 'http://www.charenton.fr/', NULL, 1, 'https://forecast7.com/en/48d822d42/charenton-le-pont/'),
-	(8, 79.82, 'elblag-coa.png', '54.1798838,19.4162031', 6, '54.1798838,19.4162031', 21, 'Elblag', 124257, 492781, 'http://www.elblag.eu/', NULL, 1, 'https://forecast7.com/en/54d1619d40/elblag/');
+	(4, 0, 'oujda-coa.png', '34deg40\'54"N, 1deg54\'35"W', 4, '34.6815864,-1.9097781', 470, 'Oujda', 494252, 1538412, 'http://www.oriental.ma/', '44vyux1QV7kY8fK8', 1, 'https://forecast7.com/en/34d68n1d90/oujda/'),
+	(5, 41.67, 'trowbridge-coa.jpg', '51deg19\'89"N, 2deg14\'28"W', 1, '51.3191329,-2.2409817', 42, 'Trowbridge', 33108, 38271, 'https://www.trowbridge.gov.uk/', 'HHpbuLdSWrhGUA', 0, 'https://forecast7.com/en/51d32n2d21/trowbridge/'),
+	(6, 70.3, 'leer-coa.png', '53deg14\'34"N, 7deg27\'5"E', 2, '53.2428733,7.4515023', 3, 'Leer', 34042, 670807, 'https://www.leer.de/', 'jH5MAuZXVbpZcxY', 1, 'https://forecast7.com/en/53d247d47/leer/'),
+	(7, 1.85, 'charenton-le-pont-coa.png', '48deg49\'21"N, 2deg24\'10"E', 5, '48.8227154,2.4030234', 35, 'Charenton-le-Pont', 28679, 55863443, 'http://www.charenton.fr/', 'uwi2bp5UV7JBd4vIyA', 1, 'https://forecast7.com/en/48d822d42/charenton-le-pont/'),
+	(8, 79.82, 'elblag-coa.png', '54deg10\'48"N, 19deg24\'58"E', 6, '54.1798838,19.4162031', 21, 'Elblag', 124257, 492781, 'http://www.elblag.eu/', 'N8mn66hVW7iQR9c', 1, 'https://forecast7.com/en/54d1619d40/elblag/');
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.countries
@@ -93,9 +93,9 @@ CREATE TABLE IF NOT EXISTS `places` (
   `website` text,
   PRIMARY KEY (`UID`),
   KEY `CityID` (`CityID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.places: ~21 rows (approximately)
+-- Dumping data for table twincities.places: ~24 rows (approximately)
 DELETE FROM `places`;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `originated`, `ImageURL`, `type`, `website`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `or
 	(5, 1, 'Grade I listed building', '51.6753018,-4.9243469', 'Monkton Old Hall', '~1350', '5.jpg', 'Landmark', 'https://en.wikipedia.org/wiki/Monkton_Old_Hall'),
 	(6, 1, 'Relaxed hotel offering classic rooms, a cosy bar and a restaurant with wood-beamed ceilings.', '51.6760237,-4.9200796', 'Old Kings Arms Hotel', '1522', '6.jpg', 'Accomodation', 'http://www.oldkingsarmshotel.co.uk'),
 	(7, 1, 'Local school', '51.6845965,-4.9284571', 'Pembroke School', '1972', '7.jpg', 'Education', 'https://hwbpluse.wales.gov.uk/en/6684038/Pages/home.aspx'),
-	(8, 2, 'A farmhouse museum dedicated to local and regional history', '52.8096001,9.9592813', 'Museum R?mstedthaus', '~1650', '8.jpg', 'Museum', 'http://www.bergen-online.de/77-0-Museum-Roemstedthaus.hrml'),
+	(8, 2, 'A farmhouse museum dedicated to local and regional history', '52.8096001,9.9592813', 'Museum Roemstedthaus', '~1650', '8.jpg', 'Museum', 'http://www.bergen-online.de/77-0-Museum-Roemstedthaus.hrml'),
 	(9, 2, 'Tourist information', '52.80995,9.9605614', 'Tourism Bergen', '-', '9.jpg', 'Organisation', 'http://www.tourismus-bergen.de/'),
 	(10, 2, 'Local church', '52.8089819,9.9602081', 'St. Lambert\'s Church, Bergen', '1826', '10.jpg', 'POI', 'http://www.lamberti-bergen.de/Lambertikirche'),
 	(11, 2, 'Local window maker', '52.8099461,9.9452406', 'Zink GmbH', '', '0.png', 'Window company', 'http://www.zink-fenster.de/'),
@@ -119,7 +119,10 @@ INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `or
 	(18, 3, 'Soon to become a museum\r\n', '35.927303,14.4817936', 'Pembroke Battery', '', '18.jpg', 'Historical Place', ''),
 	(19, 3, 'Tower overlooking Bahar ic-Caghaq\r\n', '35.9365984,14.4709146', 'Madliena Tower', '', '19.jpg', 'Tower', ''),
 	(20, 3, 'Abandoned holiday complex', '35.9317494,14.4720553', 'White Rocks', '', '20.jpg', 'Ghost Town', ''),
-	(21, 3, 'Open urban space to built to improve area', '35.9289509,14.4887602', 'Pembroke Gardens', '', '23.jpg', 'Garden', '');
+	(21, 3, 'Open urban space to built to improve area', '35.9289509,14.4887602', 'Pembroke Gardens', '', '23.jpg', 'Garden', ''),
+	(22, 5, 'Centre for the history of West of England cloth production', '51.3207362,-2.2090631', 'Trowbridge Museum', '1974', '24.jpg', 'Museum', 'https://www.trowbridgemuseum.co.uk/'),
+	(23, 5, 'Grade I listed Anglican church', '51.3214653,-2.207502', 'St. James Church', '1125', '25.jpg', 'Church', 'http://www.stjamestrowbridge.co.uk/'),
+	(24, 5, 'Open grassy spaces with children&#39;s play areas', '51.3190343,-2.2051031', 'Trowbridge Town Park', '', '26.jpg', 'Park', 'http://www.trowbridge.gov.uk/discover-trowbridge/local-parks/');
 /*!40000 ALTER TABLE `places` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.twins

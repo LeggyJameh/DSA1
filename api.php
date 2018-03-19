@@ -7,7 +7,7 @@
 include 'jsonfeed2rss.php'; // https://gist.github.com/daveajones/be26f5ca9cb7559d0c33549b53323770
 require_once ('cache.php');
 
-$resultAsXML = false;
+$resultAsXML = true;
 $result = ["success" => false];
 $cache = Cache::Instance();
 
@@ -26,10 +26,10 @@ function getCurrentCities()
 }
 
 // Postback code
-if($_SERVER['REQUEST_METHOD'] === 'POST') 
+if($_SERVER['REQUEST_METHOD'] == 'POST') 
 {
 	// If the request is for cities...
-    if ($_REQUEST['method'] === 'cities') 
+    if ($_REQUEST['method'] == 'cities') 
     {
 		$cities = getCurrentCities();
 		if ($cities != null) {
@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     }
 
 	// If the request is for places...
-    else if($_REQUEST['method'] === 'places') 
+    else if($_REQUEST['method'] == 'places') 
     {
 		$cities = getCurrentCities();
 		$places = array();
@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     }
 	
 	// If the request is for countries...
-	else if($_REQUEST['method'] === 'countries')
+	else if($_REQUEST['method'] == 'countries')
 	{
 		$cities = getCurrentCities();
 		$countries = array();
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
 	}
 
 	// If the request is for items for the RSS feed...
-    else if($_REQUEST['method'] === 'feed') 
+    else if($_REQUEST['method'] == 'feed')
     {
     	$places = Cache::$places;
     	$cities = Cache::$cities;
@@ -137,17 +137,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
     		array_push($rss['items'], $item);
     	}
 
+		$result["success"] = true;
     	$result = $rss;
-    	$resultAsXML = true;
+    	$resultAsXML = false;
     }
-
 }
 else // Otherwise, it's not a request. Go away please....
 {
 	$result["info"] = "Invalid request method, POST only";
 }
 
-if (!$resultAsXML) {
+if ($resultAsXML) {
 	header('Content-Type: application/json');
 	header('Cache-Control: no-cache');
 	echo json_encode($result, JSON_PRETTY_PRINT);
@@ -157,3 +157,4 @@ else {
 	header('Content-Type: application/xml');
 	echo convert_jsonfeed_to_rss($str);
 }
+?>

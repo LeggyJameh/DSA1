@@ -1,5 +1,5 @@
 var markers = [], map, infowin, cities = [], places = [], countries = [], feedXML, currentCityID = -1;
-var loaded = 0;
+var loaded = 0, mapLoaded = false;
 var center = {lat: 48.8588377, lng: 2.2770202};
 
 // Loads the currently required cities, places and countries from the server using AJAX
@@ -99,6 +99,7 @@ function finishedLoading()
 			generatePairNav();
 		}
 		
+		loadRSSFeed();
 		loaded = 0;
 	}
 	else { // If not everything has loaded, indicate that this one has.
@@ -110,6 +111,7 @@ function finishedLoading()
 	and loads them into the markers list. It then pulls the rss feed
 */
 function initMap() {
+	mapLoaded = true;
 	loadFromCache();
 	map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
@@ -128,32 +130,37 @@ function initMap() {
 	});
 
 	infowin = new google.maps.InfoWindow({ content: "" });
-  
-	loadRSSFeed();
 }
 
-// Pull the contents of the rss feed, and then display it
+// Pull the contents of the RSS feed, and then display it
 function loadRSSFeed() {
 	$.ajax({
-    type: "POST",
-    url: "api.php",
-    data: {method:'feed'},
-    dataType:"xml"
-  })
-  .then(function(data) {
-    var $feed = $('.feed');
-    $(data).find("item").each(function () {
-      var el = $(this);
-      var html = `
-        <h3><a href="${el.find("link").text() || '#'}" target="_blank">${el.find("title").text()}</a></h3>
-        <small>${el.find("pubDate").text()}</small>
-        <article>${el.find("description").text()}</article>
-      `;
-      $feed.append(html);
-    });
+		type: "POST",
+		url: "api.php",
+		data: {method:'feed'},
+		dataType:"xml",
+		success: function(data) {
+			displayRSS(data);
+		},
+		error: function(data) {
+			alert("Failed to load RSS feed");
+		}
+	})
+}
 
-    $('.feedbar header').text($(data).find('title')[0].textContent);
-  });  
+function displayRSS(data) {
+	var $feed = $('.feed');
+	$(data).find("item").each(function () {
+		var el = $(this);
+		var html = `
+			<h3><a href="${el.find("link").text() || '#'}" target="_blank">${el.find("title").text()}</a></h3>
+			<small>${el.find("pubDate").text()}</small>
+			<article>${el.find("description").text()}</article>
+		`;
+		$feed.append(html);
+	});
+
+	$('.feedbar header').text($(data).find('title')[0].textContent);
 }
 
 // Setup the current markers. This includes both cities and places of interest, in different visible "clusters"
@@ -351,7 +358,10 @@ function selectMainCity(cityID)
 	currentCityID = cityID;
 	displayWeather(null);
 	displayFlickr(null);
-	initMap();
+	if (mapLoaded)
+	{
+		initMap();
+	}
 }
 
 // Generate the html for the navigation panel for pairs
