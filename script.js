@@ -33,7 +33,8 @@ function loadCitiesFromCache()
 					flickr_id: item.flickr_id,
 					lat: parseFloat(coords[0]),
 					lng: parseFloat(coords[1]),
-					cluster: 'main'
+					cluster: 'main',
+					WeatherURL: item.WeatherURL
 				});
 			});
 		}
@@ -206,12 +207,21 @@ function displayMarkers(category) {
 
 // Update the weather widget for the current city
 function displayWeather(city) {
-  if (city == null) {
-    $('.openweathermap-widget').hide();
-  }
-  else {
-    $(`#openweathermap-${city.woeid}`).show().siblings().hide();
-  }
+	if (city == null) {
+		$('.weather').hide();
+	}
+	else {
+		var weather = $('.weather');
+
+		var html = '<div class="openweathermap-widget"><a class="weatherwidget-io" href="'
+		+ city.WeatherURL + '" data-label_1="' + city.name.toUpperCase() +
+		'" data-label_2="WEATHER" data-days="5" data-theme="orange" data-icons="Climacons Animated">'
+		+ city.name.toUpperCase() + ' WEATHER</a></div>';
+
+		weather.html(html);
+		__weatherwidget_init();
+		weather.show();
+	}
 }
 
 // Update the flickr widget for the current city
@@ -339,6 +349,8 @@ function selectMainCity(cityID)
 	markers = [];
 	document.cookie = "cityID=" + cityID;
 	currentCityID = cityID;
+	displayWeather(null);
+	displayFlickr(null);
 	initMap();
 }
 

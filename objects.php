@@ -6,7 +6,7 @@
 
 class City
 {
-	public $UID, $Area, $CoaURL, $Coordinates, $CountryID, $Decimal_coords, $Elevation, $Name, $Population, $woeid, $Website, $flickr_id, $Pair;
+	public $UID, $Area, $CoaURL, $Coordinates, $CountryID, $Decimal_coords, $Elevation, $Name, $Population, $woeid, $Website, $flickr_id, $Pair, $WeatherURL;
 	
 	function __construct($row_from_database)
 	{
@@ -23,6 +23,7 @@ class City
 		$this->Website = $row_from_database["Website"];
 		$this->flickr_id = $row_from_database["flickr_id"];
 		$this->Pair = $row_from_database["Pair"];
+		$this->WeatherURL = $row_from_database["WeatherURL"];
 	}
 }
 
