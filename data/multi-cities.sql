@@ -12,7 +12,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table twincities.cities
-DROP TABLE IF EXISTS `cities`;
 CREATE TABLE IF NOT EXISTS `cities` (
   `UID` int(11) NOT NULL AUTO_INCREMENT,
   `Area` float DEFAULT NULL,
@@ -47,7 +46,6 @@ INSERT INTO `cities` (`UID`, `Area`, `CoaURL`, `Coordinates`, `CountryID`, `Deci
 /*!40000 ALTER TABLE `cities` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.countries
-DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
   `UID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(15) NOT NULL DEFAULT '',
@@ -80,7 +78,6 @@ INSERT INTO `countries` (`UID`, `Name`, `Name_Short`, `Population`, `Language`, 
 /*!40000 ALTER TABLE `countries` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.places
-DROP TABLE IF EXISTS `places`;
 CREATE TABLE IF NOT EXISTS `places` (
   `UID` int(11) NOT NULL AUTO_INCREMENT,
   `CityID` int(11) NOT NULL DEFAULT '-1',
@@ -93,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `places` (
   `website` text,
   PRIMARY KEY (`UID`),
   KEY `CityID` (`CityID`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
--- Dumping data for table twincities.places: ~24 rows (approximately)
+-- Dumping data for table twincities.places: ~36 rows (approximately)
 DELETE FROM `places`;
 /*!40000 ALTER TABLE `places` DISABLE KEYS */;
 INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `originated`, `ImageURL`, `type`, `website`) VALUES
@@ -122,11 +119,26 @@ INSERT INTO `places` (`UID`, `CityID`, `description`, `geolocation`, `name`, `or
 	(21, 3, 'Open urban space to built to improve area', '35.9289509,14.4887602', 'Pembroke Gardens', '', '23.jpg', 'Garden', ''),
 	(22, 5, 'Centre for the history of West of England cloth production', '51.3207362,-2.2090631', 'Trowbridge Museum', '1974', '24.jpg', 'Museum', 'https://www.trowbridgemuseum.co.uk/'),
 	(23, 5, 'Grade I listed Anglican church', '51.3214653,-2.207502', 'St. James Church', '1125', '25.jpg', 'Church', 'http://www.stjamestrowbridge.co.uk/'),
-	(24, 5, 'Open grassy spaces with children&#39;s play areas', '51.3190343,-2.2051031', 'Trowbridge Town Park', '', '26.jpg', 'Park', 'http://www.trowbridge.gov.uk/discover-trowbridge/local-parks/');
+	(24, 5, 'Open grassy spaces with children&#39;s play areas', '51.3190343,-2.2051031', 'Trowbridge Town Park', '', '26.jpg', 'Park', 'http://www.trowbridge.gov.uk/discover-trowbridge/local-parks/'),
+	(25, 4, 'Park and Garden', '34.672934,-1.9055866', 'Parc Lalla Aicha', '', '27.jpg', 'Park', ''),
+	(26, 4, 'Olympic pool with 10 meter diving board', '34.6731172,-1.9061574', 'Piscine Municipale', NULL, '28.JPG', 'Swimming Pool', NULL),
+	(27, 4, 'Multi-discipline sports center', '34.6713244,-1.9026429', 'Piste Parc Lalla Aicha', NULL, '29.jpg', 'Athletic Track', NULL),
+	(28, 4, 'Pre-colonial Mosque', '34.6716672,-1.8898627', 'Imam Mosque Shatibi', NULL, '30.jpg', 'Mosque', NULL),
+	(29, 6, 'Tea Museum', '53.2291991,7.4511141', 'Bünting Teemuseum', NULL, '31.jpg', 'Museum', 'https://www.buenting-teemuseum.de/home.html'),
+	(30, 6, 'Vintage Steamship Prince Henry', '53.228692,7.4551459', 'Historisches Dampfschiff Prinz Heinrich', '1909', '32.jpg', 'Historical Place', 'http://prinz-heinrich.tridem3.com/startseite/'),
+	(31, 6, 'Artificial mound piled near the Ems', '53.2278487,7.4372768', 'Plytenberg', NULL, '33.jpg', 'Park', NULL),
+	(32, 6, 'Vintage boat harbour', '53.2261492,7.4510091', 'Museumshafen', NULL, '34.jpg', 'Museum', NULL),
+	(33, 7, 'Large modern shopping centre', '48.825971,2.393251', 'Bercy 2', NULL, '35.jpg', 'Shopping Centre', 'http://www.ccbercy2.com/'),
+	(34, 7, 'Media library of architecture and heritage', '48.8217195,2.4050045', 'Médiathèque de l\'architecture et du patrimoin', '1999', '36.jpg', 'Library', 'http://www.mediatheque-patrimoine.culture.gouv.fr/index.html'),
+	(35, 7, 'Local old church', '48.8216053,2.4152672', 'Paroisse St Pierre', NULL, '37.jpg', 'Church', 'http://paroisse.charenton.free.fr/'),
+	(36, 7, 'Town hall', '48.8197176,2.416196', 'Mairie de Charenton Le Pont', NULL, '38.jpg', 'Town Hall', 'http://www.charenton.fr/'),
+	(37, 8, 'Place for sledging, skiing & snowboarding', '54.1694744,19.4416531', 'Góra Chrobrego', NULL, '39.JPG', 'Ski Resort', 'http://www.gora-chrobrego.pl/'),
+	(38, 8, 'Park & Garden', '54.1695495,19.4182264', 'Park Dolinka', NULL, '40.JPG', 'Park', NULL),
+	(39, 8, 'Swimming pool with children&#39;s slides', '54.1741602,19.4208917', 'Centrum Rekreacji Wodnej Dolinka', NULL, '41.jpg', 'Swimming Pool', 'http://www.dolinka.elblag.eu/'),
+	(40, 8, 'Park & Garden', '54.1769453,19.4081924', 'Park. M. Kajki', NULL, '42.jpg', 'Park', NULL);
 /*!40000 ALTER TABLE `places` ENABLE KEYS */;
 
 -- Dumping structure for table twincities.twins
-DROP TABLE IF EXISTS `twins`;
 CREATE TABLE IF NOT EXISTS `twins` (
   `City1_ID` int(11) NOT NULL DEFAULT '-1',
   `City2_ID` int(11) NOT NULL DEFAULT '-1',
