@@ -1,6 +1,4 @@
 <?php
-	header('Content-Type: text/plain');
-	$schemaFile = simplexml_load_file("Schema.xsd");
 ?>
 
 <html>
@@ -8,10 +6,9 @@
 		<title>Twin Cities Data Schema</title>
 	</head>
 	<body>
-		<div>
-			<?php
-				echo $schemaFile->asXML();
-			?>
-		</div>
+		<h3>Twin Cities database schema and data</h3>
+		<?php
+			show_source("schema.sql");
+		?>
 	</body>
 </html>
