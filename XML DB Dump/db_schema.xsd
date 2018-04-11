@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="twincities">
+	<xs:complexType>
+	  <xs:sequence>
+		<xs:element name="cities">
+		  <xs:complexType>
+			<xs:sequence>
+			  <xs:element name="city" maxOccurs="unbounded">
+				<xs:complexType>
+				  <xs:sequence>
+				    <xs:element name="UID" type="xs:integer"/>
+				    <xs:element name="Area" type="xs:decimal"/>
+				    <xs:element name="CoaURL" type="xs:string"/>
+				    <xs:element name="Coordinates" type="xs:string"/>
+					<xs:element name="CountryID" type="xs:integer"/>
+				    <xs:element name="Decimal_coords" type="xs:string"/>
+				    <xs:element name="Elevation" type="xs:integer"/>
+				    <xs:element name="Name" type="xs:string"/>
+					<xs:element name="Population" type="xs:integer"/>
+				    <xs:element name="woeid" type="xs:integer"/>
+				    <xs:element name="Website" type="xs:string"/>
+				    <xs:element name="flickr_id" type="xs:string"/>
+					<xs:element name="Pair" type="xs:integer"/>
+				    <xs:element name="WeatherURL" type="xs:string"/>
+				  </xs:sequence>
+				</xs:complexType>
+			  </xs:element>
+			</xs:sequence>
+		  </xs:complexType>
+		</xs:element>
+		<xs:element name="countries">
+		  <xs:complexType>
+			<xs:sequence>
+			  <xs:element name="country" maxOccurs="unbounded">
+				<xs:complexType>
+				  <xs:sequence>
+				    <xs:element name="UID" type="xs:integer"/>
+				    <xs:element name="Name" type="xs:string"/>
+				    <xs:element name="Name_Short" type="xs:string"/>
+				    <xs:element name="Population" type="xs:integer"/>
+					<xs:element name="Language" type="xs:string"/>
+				    <xs:element name="Currency" type="xs:string"/>
+				    <xs:element name="Geo_Location" type="xs:string"/>
+				    <xs:element name="FlagURL" type="xs:string"/>
+					<xs:element name="CoaURL" type="xs:string"/>
+				    <xs:element name="WOE_ID" type="xs:integer"/>
+				    <xs:element name="Total_Area" type="xs:integer"/>
+				    <xs:element name="Time_Zone" type="xs:string"/>
+					<xs:element name="Photo_url" type="xs:string"/>
+				    <xs:element name="Wiki_url" type="xs:string"/>
+				  </xs:sequence>
+				</xs:complexType>
+			  </xs:element>
+			</xs:sequence>
+		  </xs:complexType>
+		</xs:element>
+		<xs:element name="places">
+		  <xs:complexType>
+			<xs:sequence>
+			  <xs:element name="place" maxOccurs="unbounded">
+				<xs:complexType>
+				  <xs:sequence>
+				    <xs:element name="UID" type="xs:integer"/>
+				    <xs:element name="CityID" type="xs:integer"/>
+				    <xs:element name="description" type="xs:string"/>
+				    <xs:element name="geolocation" type="xs:string"/>
+					<xs:element name="name" type="xs:string"/>
+				    <xs:element name="originated" type="xs:string"/>
+				    <xs:element name="ImageURL" type="xs:string"/>
+				    <xs:element name="type" type="xs:string"/>
+					<xs:element name="website" type="xs:string"/>
+				  </xs:sequence>
+				</xs:complexType>
+			  </xs:element>
+			</xs:sequence>
+		  </xs:complexType>
+		</xs:element>
+		<xs:element name="twins">
+		  <xs:complexType>
+			<xs:sequence>
+			  <xs:element name="twin" maxOccurs="unbounded">
+				<xs:complexType>
+				  <xs:sequence>
+				    <xs:element name="City1_ID" type="xs:integer"/>
+				    <xs:element name="City2_ID" type="xs:integer"/>
+				  </xs:sequence>
+				</xs:complexType>
+			  </xs:element>
+			</xs:sequence>
+		  </xs:complexType>
+		</xs:element>
+	  </xs:sequence>
+	</xs:complexType>
+  </xs:element>
+</xs:schema>

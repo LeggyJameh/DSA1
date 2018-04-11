@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="utf-8"?>
+<twincities>
+  <cities>
+	<city>
+	  <UID>1</UID>
+	  <Area>7.37</Area>
+	  <CoaURL>Pembroke-UK.jpg</CoaURL>
+	  <Coordinates>51deg40'34&quot;N, 4deg54'57&quot;W</Coordinates>
+	  <CountryID>1</CountryID>
+	  <Decimal_coords>51.676111, -4.915833</Decimal_coords>
+	  <Elevation>77</Elevation>
+	  <Name>Pembroke</Name>
+	  <Population>7552</Population>
+	  <woeid>31602</woeid>
+	  <Website>http://www.pembroketown.org.uk/</Website>
+	  <flickr_id>ZIa1xkZQULySiSPLdA</flickr_id>
+	  <Pair>0</Pair>
+	  <WeatherURL>https://forecast7.com/en/51d67n4d91/pembroke/</WeatherURL>
+    </city>
+	<city>
+	  <UID>2</UID>
+	  <Area>163.77</Area>
+	  <CoaURL>Bergen.png</CoaURL>
+	  <Coordinates>52deg48'37&quot;N, 9deg57'40&quot;E</Coordinates>
+	  <CountryID>2</CountryID>
+	  <Decimal_coords>52.810278, 9.961111</Decimal_coords>
+	  <Elevation>68</Elevation>
+	  <Name>Bergen</Name>
+	  <Population>13027</Population>
+	  <woeid>12833291</woeid>
+	  <Website>http://www.bergen-online.de/</Website>
+	  <flickr_id>qyw9WdNXUb1WY6c</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/52d819d96/bergen/</WeatherURL>
+    </city>
+	<city>
+	  <UID>3</UID>
+	  <Area>2.3</Area>
+	  <CoaURL>Pembroke-MT.jpg</CoaURL>
+	  <Coordinates>35deg55'35&quot;N, 14deg28'51&quot;E</Coordinates>
+	  <CountryID>3</CountryID>
+	  <Decimal_coords>35.926389, 14.480833</Decimal_coords>
+	  <Elevation>51</Elevation>
+	  <Name>Pembroke</Name>
+	  <Population>3645</Population>
+	  <woeid>10645040</woeid>
+	  <Website>http://www.pembroke.gov.mt/</Website>
+	  <flickr_id>Xb438KZQUrxS60kmdA</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/35d9314d48/pembroke/</WeatherURL>
+    </city>
+	<city>
+	  <UID>4</UID>
+	  <Area>0</Area>
+	  <CoaURL>oujda-coa.png</CoaURL>
+	  <Coordinates>34deg40'54&quot;N, 1deg54'35&quot;W</Coordinates>
+	  <CountryID>4</CountryID>
+	  <Decimal_coords>34.6815864,-1.9097781</Decimal_coords>
+	  <Elevation>470</Elevation>
+	  <Name>Oujda</Name>
+	  <Population>494252</Population>
+	  <woeid>1538412</woeid>
+	  <Website>http://www.oriental.ma/</Website>
+	  <flickr_id>44vyux1QV7kY8fK8</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/34d68n1d90/oujda/</WeatherURL>
+    </city>
+	<city>
+	  <UID>5</UID>
+	  <Area>41.67</Area>
+	  <CoaURL>trowbridge-coa.jpg</CoaURL>
+	  <Coordinates>51deg19'89&quot;N, 2deg14'28&quot;W</Coordinates>
+	  <CountryID>1</CountryID>
+	  <Decimal_coords>51.3191329,-2.2409817</Decimal_coords>
+	  <Elevation>42</Elevation>
+	  <Name>Trowbridge</Name>
+	  <Population>33108</Population>
+	  <woeid>38271</woeid>
+	  <Website>https://www.trowbridge.gov.uk/</Website>
+	  <flickr_id>HHpbuLdSWrhGUA</flickr_id>
+	  <Pair>0</Pair>
+	  <WeatherURL>https://forecast7.com/en/51d32n2d21/trowbridge/</WeatherURL>
+    </city>
+	<city>
+	  <UID>6</UID>
+	  <Area>70.3</Area>
+	  <CoaURL>leer-coa.png</CoaURL>
+	  <Coordinates>53deg14'34&quot;N, 7deg27'5&quot;E</Coordinates>
+	  <CountryID>2</CountryID>
+	  <Decimal_coords>53.2428733,7.4515023</Decimal_coords>
+	  <Elevation>3</Elevation>
+	  <Name>Leer</Name>
+	  <Population>34042</Population>
+	  <woeid>670807</woeid>
+	  <Website>https://www.leer.de/</Website>
+	  <flickr_id>jH5MAuZXVbpZcxY</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/53d247d47/leer/</WeatherURL>
+    </city>
+	<city>
+	  <UID>7</UID>
+	  <Area>1.85</Area>
+	  <CoaURL>charenton-le-pont-coa.png</CoaURL>
+	  <Coordinates>48deg49'21&quot;N, 2deg24'10&quot;E</Coordinates>
+	  <CountryID>5</CountryID>
+	  <Decimal_coords>48.8227154,2.4030234</Decimal_coords>
+	  <Elevation>35</Elevation>
+	  <Name>Charenton-le-Pont</Name>
+	  <Population>28679</Population>
+	  <woeid>55863443</woeid>
+	  <Website>http://www.charenton.fr/</Website>
+	  <flickr_id>uwi2bp5UV7JBd4vIyA</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/48d822d42/charenton-le-pont/</WeatherURL>
+    </city>
+	<city>
+	  <UID>8</UID>
+	  <Area>79.82</Area>
+	  <CoaURL>elblag-coa.png</CoaURL>
+	  <Coordinates>54deg10'48&quot;N, 19deg24'58&quot;E</Coordinates>
+	  <CountryID>6</CountryID>
+	  <Decimal_coords>54.1798838,19.4162031</Decimal_coords>
+	  <Elevation>21</Elevation>
+	  <Name>Elblag</Name>
+	  <Population>124257</Population>
+	  <woeid>492781</woeid>
+	  <Website>http://www.elblag.eu/</Website>
+	  <flickr_id>N8mn66hVW7iQR9c</flickr_id>
+	  <Pair>1</Pair>
+	  <WeatherURL>https://forecast7.com/en/54d1619d40/elblag/</WeatherURL>
+    </city>
+  </cities>
+  <countries>
+    <country>
+	  <UID>1</UID>
+	  <Name>United Kingdom</Name>
+	  <Name_Short>UK</Name_Short>
+	  <Population>65640000</Population>
+	  <Language>English</Language>
+	  <Currency>GBP</Currency>
+	  <Geo_Location>46.3543038,-5.3732799</Geo_Location>
+	  <FlagURL>uk-flag.png</FlagURL>
+	  <CoaURL>uk-coa.png</CoaURL>
+	  <WOE_ID>23424975</WOE_ID>
+	  <Total_Area>242495</Total_Area>
+	  <Time_Zone>UTC</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/United_Kingdom</Wiki_url>
+	</country>
+	<country>
+	  <UID>2</UID>
+	  <Name>Germany</Name>
+	  <Name_Short>DE</Name_Short>
+	  <Population>82670000</Population>
+	  <Language>German</Language>
+	  <Currency>EUR</Currency>
+	  <Geo_Location>51.0968057,5.9675996</Geo_Location>
+	  <FlagURL>germany-flag.png</FlagURL>
+	  <CoaURL>germany-coa.png</CoaURL>
+	  <WOE_ID>23424829</WOE_ID>
+	  <Total_Area>357168</Total_Area>
+	  <Time_Zone>UTC+1</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/Germany</Wiki_url>
+	</country>
+	<country>
+	  <UID>3</UID>
+	  <Name>Malta</Name>
+	  <Name_Short>MT</Name_Short>
+	  <Population>436947</Population>
+	  <Language>Maltese</Language>
+	  <Currency>EUR</Currency>
+	  <Geo_Location>35.9421244,14.098163</Geo_Location>
+	  <FlagURL>malta-flag.png</FlagURL>
+	  <CoaURL>malta-coa.png</CoaURL>
+	  <WOE_ID>23424897</WOE_ID>
+	  <Total_Area>316</Total_Area>
+	  <Time_Zone>UTC+1</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/Malta</Wiki_url>
+	</country>
+	<country>
+	  <UID>4</UID>
+	  <Name>Morocco</Name>
+	  <Name_Short>MA</Name_Short>
+	  <Population>33848242</Population>
+	  <Language>Moroccan Arabic</Language>
+	  <Currency>MAD</Currency>
+	  <Geo_Location>30.5126737,-25.2569004</Geo_Location>
+	  <FlagURL>morocco-flag.png</FlagURL>
+	  <CoaURL>morocco-coa.png</CoaURL>
+	  <WOE_ID>23424893</WOE_ID>
+	  <Total_Area>710850</Total_Area>
+	  <Time_Zone>UTC</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/Morocco</Wiki_url>
+	</country>
+	<country>
+	  <UID>5</UID>
+	  <Name>France</Name>
+	  <Name_Short>FR</Name_Short>
+	  <Population>67201000</Population>
+	  <Language>French</Language>
+	  <Currency>EUR</Currency>
+	  <Geo_Location>44.8386812,-15.8264018</Geo_Location>
+	  <FlagURL>france-flag.png</FlagURL>
+	  <CoaURL>france-coa.png</CoaURL>
+	  <WOE_ID>23424819</WOE_ID>
+	  <Total_Area>640679</Total_Area>
+	  <Time_Zone>UTC+1</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/France</Wiki_url>
+	</country>
+	<country>
+	  <UID>6</UID>
+	  <Name>Poland</Name>
+	  <Name_Short>PL</Name_Short>
+	  <Population>38422346</Population>
+	  <Language>Polish</Language>
+	  <Currency>EUR</Currency>
+	  <Geo_Location>51.6266388,10.1888941</Geo_Location>
+	  <FlagURL>poland-flag.png</FlagURL>
+	  <CoaURL>poland-coa.png</CoaURL>
+	  <WOE_ID>23424923</WOE_ID>
+	  <Total_Area>312679</Total_Area>
+	  <Time_Zone>UTC+1</Time_Zone>
+	  <Photo_url></Photo_url>
+	  <Wiki_url>https://en.wikipedia.org/wiki/Poland</Wiki_url>
+	</country>
+  </countries>
+  <places>
+	<place>
+	  <UID>1</UID>
+	  <CityID>1</CityID>
+	  <description>A medieval castle. Birthplace of Henry VII</description>
+	  <geolocation>51.6769031,-4.9227225</geolocation>
+	  <name>Pembroke Castle</name>
+	  <originated>1093</originated>
+	  <ImageURL>1.jpg</ImageURL>
+	  <type>Landmark</type>
+	  <website>http://pembroke-castle.co.uk/</website>
+	</place>
+	<place>
+	  <UID>2</UID>
+	  <CityID>1</CityID>
+	  <description>Main train station</description>
+	  <geolocation>51.7284586,-5.0074532</geolocation>
+	  <name>Pembroke Railway Station</name>
+	  <originated>1863</originated>
+	  <ImageURL>2.jpg</ImageURL>
+	  <type>Public Transport</type>
+	  <website>http://www.nationalrail.co.uk/stations_destinations/PMB.aspx</website>
+	</place>
+	<place>
+	  <UID>3</UID>
+	  <CityID>1</CityID>
+	  <description>Welsh rugby union team</description>
+	  <geolocation>51.7285002,-5.0074532</geolocation>
+	  <name>Pembroke Rugby Football Club</name>
+	  <originated>1896</originated>
+	  <ImageURL>3.jpg</ImageURL>
+	  <type>Sports Club</type>
+	  <website>http://pembroke.rfc.wales/</website>
+	</place>
+	<place>
+	  <UID>4</UID>
+	  <CityID>1</CityID>
+	  <description>Highly rated pub</description>
+	  <geolocation>51.6775255,-4.9201554</geolocation>
+	  <name>Watermans Arms</name>
+	  <originated>-</originated>
+	  <ImageURL>4.jpg</ImageURL>
+	  <type>Public House</type>
+	  <website>http://www.watermansarmspembroke.co.uk/</website>
+	</place>
+	<place>
+	  <UID>5</UID>
+	  <CityID>1</CityID>
+	  <description>Grade I listed building</description>
+	  <geolocation>51.6753018,-4.9243469</geolocation>
+	  <name>Monkton Old Hall</name>
+	  <originated>~1350</originated>
+	  <ImageURL>5.jpg</ImageURL>
+	  <type>Landmark</type>
+	  <website>https://en.wikipedia.org/wiki/Monkton_Old_Hall</website>
+	</place>
+	<place>
+	  <UID>6</UID>
+	  <CityID>1</CityID>
+	  <description>Relaxed hotel offering classic rooms, a cosy bar and a restaurant with wood-beamed ceilings.</description>
+	  <geolocation>51.6760237,-4.9200796</geolocation>
+	  <name>>Old Kings Arms Hotel</name>
+	  <originated>1522</originated>
+	  <ImageURL>6.jpg</ImageURL>
+	  <type>Accomodation</type>
+	  <website>http://www.oldkingsarmshotel.co.uk</website>
+	</place>
+	<place>
+	  <UID>7</UID>
+	  <CityID>1</CityID>
+	  <description>Local School</description>
+	  <geolocation>51.6845965,-4.9284571</geolocation>
+	  <name>>Pembroke School</name>
+	  <originated>1972</originated>
+	  <ImageURL>7.jpg</ImageURL>
+	  <type>Education</type>
+	  <website>https://hwbpluse.wales.gov.uk/en/6684038/Pages/home.aspx</website>
+	</place>
+	<place>
+	  <UID>8</UID>
+	  <CityID>2</CityID>
+	  <description>A farmhouse museum dedicated to local and regional history</description>
+	  <geolocation>52.8096001,9.9592813</geolocation>
+	  <name>Museum Roemstedthaus</name>
+	  <originated>~1650</originated>
+	  <ImageURL>8.jpg</ImageURL>
+	  <type>Museum</type>
+	  <website>http://www.bergen-online.de/77-0-Museum-Roemstedthaus.hrml</website>
+	</place>
+	<place>
+	  <UID>9</UID>
+	  <CityID>2</CityID>
+	  <description>Tourist information</description>
+	  <geolocation>52.80995,9.9605614</geolocation>
+	  <name>Tourism Bergen</name>
+	  <originated>-</originated>
+	  <ImageURL>9.jpg</ImageURL>
+	  <type>Organisation</type>
+	  <website>http://www.tourismus-bergen.de/</website>
+	</place>
+	<place>
+	  <UID>10</UID>
+	  <CityID>2</CityID>
+	  <description>Local church</description>
+	  <geolocation>52.8089819,9.9602081</geolocation>
+	  <name>St. Lambert's Church, Bergen</name>
+	  <originated>1826</originated>
+	  <ImageURL>10.jpg</ImageURL>
+	  <type>POI</type>
+	  <website>http://www.lamberti-bergen.de/Lambertikirche</website>
+	</place>
+	<place>
+	  <UID>11</UID>
+	  <CityID>2</CityID>
+	  <description>Local window maker</description>
+	  <geolocation>52.8099461,9.9452406</geolocation>
+	  <name>Zink GmbH</name>
+	  <originated>-</originated>
+	  <ImageURL>0.png</ImageURL>
+	  <type>Window Company</type>
+	  <website>http://www.zink-fenster.de/</website>
+	</place>
+	<place>
+	  <UID>12</UID>
+	  <CityID>2</CityID>
+	  <description>Ice cream parlour</description>
+	  <geolocation>52.807424,9.9636833</geolocation>
+	  <name>Eiscafe Miriam</name>
+	  <originated>-</originated>
+	  <ImageURL>12.jpg</ImageURL>
+	  <type>Restaurant</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>13</UID>
+	  <CityID>2</CityID>
+	  <description>Indoor heated pool</description>
+	  <geolocation>52.809202,9.9472403</geolocation>
+	  <name>Stadtverwaltung Bergen</name>
+	  <originated>-</originated>
+	  <ImageURL>13.jpg</ImageURL>
+	  <type>Swimming Pool</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>14</UID>
+	  <CityID>2</CityID>
+	  <description>Used for various events including music concerts</description>
+	  <geolocation>52.80823,9.9572913</geolocation>
+	  <name>Stadthaus</name>
+	  <originated>-</originated>
+	  <ImageURL>14.jpg</ImageURL>
+	  <type>Venue</type>
+	  <website>https://www.bergen-online.de/68-0-Stadthaus.html</website>
+	</place>
+	<place>
+	  <UID>15</UID>
+	  <CityID>3</CityID>
+	  <description>A polygonal fort built by the British to defend part of the Victoria Lines</description>
+	  <geolocation>35.9268796,14.478803</geolocation>
+	  <name>Fort Pembroke</name>
+	  <originated>-</originated>
+	  <ImageURL>15.jpg</ImageURL>
+	  <type>Fortress</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>16</UID>
+	  <CityID>3</CityID>
+	  <description>Monument to wounded ANZAC troops nursed in Malta</description>
+	  <geolocation>35.9256399,14.4733885</geolocation>
+	  <name>Australia Hall</name>
+	  <originated>-</originated>
+	  <ImageURL>22.jpg</ImageURL>
+	  <type>Landmark</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>17</UID>
+	  <CityID>3</CityID>
+	  <description>Local football club</description>
+	  <geolocation>35.9308411,14.4720813</geolocation>
+	  <name>Melita Football Club</name>
+	  <originated>-</originated>
+	  <ImageURL>17.jpg</ImageURL>
+	  <type>Football Club</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>18</UID>
+	  <CityID>3</CityID>
+	  <description>Soon to become a museum</description>
+	  <geolocation>35.927303,14.4817936</geolocation>
+	  <name>Pembroke Battery</name>
+	  <originated>-</originated>
+	  <ImageURL>18.jpg</ImageURL>
+	  <type>Historical Place</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>19</UID>
+	  <CityID>3</CityID>
+	  <description>Tower overlooking Bahar ic-Caghaq</description>
+	  <geolocation>35.9365984,14.4709146</geolocation>
+	  <name>Madliena Tower</name>
+	  <originated>-</originated>
+	  <ImageURL>19.jpg</ImageURL>
+	  <type>Tower</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>20</UID>
+	  <CityID>3</CityID>
+	  <description>Abandoned holiday complex</description>
+	  <geolocation>35.9317494,14.4720553</geolocation>
+	  <name>White Rocks</name>
+	  <originated>-</originated>
+	  <ImageURL>20.jpg</ImageURL>
+	  <type>Ghost Town</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>21</UID>
+	  <CityID>3</CityID>
+	  <description>Open urban space to built to improve area</description>
+	  <geolocation>35.9289509,14.4887602</geolocation>
+	  <name>Pembroke Gardens</name>
+	  <originated>-</originated>
+	  <ImageURL>23.jpg</ImageURL>
+	  <type>Garden</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>22</UID>
+	  <CityID>5</CityID>
+	  <description>Centre for the history of West of England cloth production</description>
+	  <geolocation>51.3207362,-2.2090631</geolocation>
+	  <name>Trowbridge Museum</name>
+	  <originated>1974</originated>
+	  <ImageURL>24.jpg</ImageURL>
+	  <type>Museum</type>
+	  <website>https://www.trowbridgemuseum.co.uk/</website>
+	</place>
+	<place>
+	  <UID>23</UID>
+	  <CityID>5</CityID>
+	  <description>Grade I listed Anglican church</description>
+	  <geolocation>51.3214653,-2.207502</geolocation>
+	  <name>St. James Church</name>
+	  <originated>~1125</originated>
+	  <ImageURL>25.jpg</ImageURL>
+	  <type>Church</type>
+	  <website>http://www.stjamestrowbridge.co.uk/</website>
+	</place>
+	<place>
+	  <UID>24</UID>
+	  <CityID>5</CityID>
+	  <description>Open grassy spaces with children&#39;s play areas</description>
+	  <geolocation>51.3190343,-2.2051031</geolocation>
+	  <name>Trowbridge Town Park</name>
+	  <originated>-</originated>
+	  <ImageURL>26.jpg</ImageURL>
+	  <type>Park</type>
+	  <website>http://www.trowbridge.gov.uk/discover-trowbridge/local-parks/</website>
+	</place>
+	<place>
+	  <UID>25</UID>
+	  <CityID>4</CityID>
+	  <description>Park and Garden</description>
+	  <geolocation>34.672934,-1.9055866</geolocation>
+	  <name>Parc Lalla Aicha</name>
+	  <originated>-</originated>
+	  <ImageURL>27.jpg</ImageURL>
+	  <type>Park</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>26</UID>
+	  <CityID>4</CityID>
+	  <description>Olympic pool with 10 meter diving board</description>
+	  <geolocation>34.6731172,-1.9061574</geolocation>
+	  <name>Piscine Municipale</name>
+	  <originated>-</originated>
+	  <ImageURL>28.JPG</ImageURL>
+	  <type>Swimming Pool</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>27</UID>
+	  <CityID>4</CityID>
+	  <description>Multi-discipline sports center</description>
+	  <geolocation>34.6713244,-1.9026429</geolocation>
+	  <name>Piste Parc Lalla Aicha</name>
+	  <originated>-</originated>
+	  <ImageURL>29.jpg</ImageURL>
+	  <type>Athletic Track</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>28</UID>
+	  <CityID>4</CityID>
+	  <description>Pre-colonial Mosque</description>
+	  <geolocation>34.6716672,-1.8898627</geolocation>
+	  <name>Imam Mosque Shatibi</name>
+	  <originated>-</originated>
+	  <ImageURL>30.jpg</ImageURL>
+	  <type>Mosque</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>29</UID>
+	  <CityID>6</CityID>
+	  <description>Tea Museum</description>
+	  <geolocation>53.2291991,7.4511141</geolocation>
+	  <name>Bünting Teemuseum</name>
+	  <originated>-</originated>
+	  <ImageURL>31.jpg</ImageURL>
+	  <type>Museum</type>
+	  <website>https://www.buenting-teemuseum.de/home.html</website>
+	</place>
+	<place>
+	  <UID>30</UID>
+	  <CityID>6</CityID>
+	  <description>Vintage Steamship Prince Henry</description>
+	  <geolocation>53.228692,7.4551459</geolocation>
+	  <name>Historisches Dampfschiff Prinz Heinrich</name>
+	  <originated>1909</originated>
+	  <ImageURL>32.jpg</ImageURL>
+	  <type>Historical Place</type>
+	  <website>http://prinz-heinrich.tridem3.com/startseite/</website>
+	</place>
+	<place>
+	  <UID>31</UID>
+	  <CityID>6</CityID>
+	  <description>Artificial mound piled near the Ems</description>
+	  <geolocation>53.2278487,7.4372768</geolocation>
+	  <name>Plytenberg</name>
+	  <originated>-</originated>
+	  <ImageURL>33.jpg</ImageURL>
+	  <type>Park</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>32</UID>
+	  <CityID>6</CityID>
+	  <description>Vintage boat harbour</description>
+	  <geolocation>53.2261492,7.4510091</geolocation>
+	  <name>Museumshafen</name>
+	  <originated>-</originated>
+	  <ImageURL>34.jpg</ImageURL>
+	  <type>Museum</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>33</UID>
+	  <CityID>7</CityID>
+	  <description>Large modern shopping centre</description>
+	  <geolocation>48.825971,2.393251</geolocation>
+	  <name>Bercy 2</name>
+	  <originated>-</originated>
+	  <ImageURL>35.jpg</ImageURL>
+	  <type>Shopping Centre</type>
+	  <website>http://www.ccbercy2.com/</website>
+	</place>
+	<place>
+	  <UID>34</UID>
+	  <CityID>7</CityID>
+	  <description>Media library of architecture and heritage</description>
+	  <geolocation>48.8217195,2.4050045</geolocation>
+	  <name>Médiathèque de l'architecture et du patrimoin</name>
+	  <originated>1999</originated>
+	  <ImageURL>36.jpg</ImageURL>
+	  <type>Library</type>
+	  <website>http://www.mediatheque-patrimoine.culture.gouv.fr/index.html</website>
+	</place>
+	<place>
+	  <UID>35</UID>
+	  <CityID>7</CityID>
+	  <description>Local old church</description>
+	  <geolocation>48.8216053,2.4152672</geolocation>
+	  <name>Paroisse St Pierre</name>
+	  <originated>-</originated>
+	  <ImageURL>37.jpg</ImageURL>
+	  <type>Church</type>
+	  <website>http://paroisse.charenton.free.fr/</website>
+	</place>
+	<place>
+	  <UID>36</UID>
+	  <CityID>7</CityID>
+	  <description>Town hall</description>
+	  <geolocation>48.8197176,2.416196</geolocation>
+	  <name>Mairie de Charenton Le Pont</name>
+	  <originated>-</originated>
+	  <ImageURL>38.jpg</ImageURL>
+	  <type>Town Hall</type>
+	  <website>http://www.charenton.fr/</website>
+	</place>
+	<place>
+	  <UID>37</UID>
+	  <CityID>8</CityID>
+	  <description>Place for sledging, skiing &amp; snowboarding</description>
+	  <geolocation>54.1694744,19.4416531</geolocation>
+	  <name>Góra Chrobrego</name>
+	  <originated>-</originated>
+	  <ImageURL>39.JPG</ImageURL>
+	  <type>Ski Resort</type>
+	  <website>http://www.gora-chrobrego.pl/</website>
+	</place>
+	<place>
+	  <UID>38</UID>
+	  <CityID>8</CityID>
+	  <description>Park &amp; Garden</description>
+	  <geolocation>54.1695495,19.4182264</geolocation>
+	  <name>Park Dolinka</name>
+	  <originated>-</originated>
+	  <ImageURL>40.JPG</ImageURL>
+	  <type>Park</type>
+	  <website></website>
+	</place>
+	<place>
+	  <UID>39</UID>
+	  <CityID>8</CityID>
+	  <description>Swimming pool with children&#39;s slides</description>
+	  <geolocation>54.1741602,19.4208917</geolocation>
+	  <name>Centrum Rekreacji Wodnej Dolinka</name>
+	  <originated>-</originated>
+	  <ImageURL>41.jpg</ImageURL>
+	  <type>Swimming Pool</type>
+	  <website>http://www.dolinka.elblag.eu/</website>
+	</place>
+	<place>
+	  <UID>40</UID>
+	  <CityID>8</CityID>
+	  <description>Park &amp; Garden</description>
+	  <geolocation>54.1769453,19.4081924</geolocation>
+	  <name>Park. M. Kajki</name>
+	  <originated>-</originated>
+	  <ImageURL>42.jpg</ImageURL>
+	  <type>Park</type>
+	  <website></website>
+	</place>
+  </places>
+  <twins>
+	<twin>
+	  <City1_ID>1</City1_ID>
+	  <City2_ID>2</City2_ID>
+	</twin>
+	<twin>
+	  <City1_ID>1</City1_ID>
+	  <City2_ID>3</City2_ID>
+	</twin>
+	<twin>
+	  <City1_ID>5</City1_ID>
+	  <City2_ID>4</City2_ID>
+	</twin>
+	<twin>
+	  <City1_ID>5</City1_ID>
+	  <City2_ID>6</City2_ID>
+	</twin>
+	<twin>
+	  <City1_ID>5</City1_ID>
+	  <City2_ID>7</City2_ID>
+	</twin>
+	<twin>
+	  <City1_ID>5</City1_ID>
+	  <City2_ID>8</City2_ID>
+	</twin>
+  </twins>
+</twincities>
