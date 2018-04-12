@@ -1,0 +1,27 @@
+html, body { 
+  height: 100%;
+  margin: 0; 
+  padding: 0; 
+}
+
+/* Main layout stuff */
+.content {
+  font-family:Helvetica;
+  text-decoration: none;
+  color: #f5f5f5;
+  background-color: #333;
+  width: 60%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.splitter-line {
+	border-bottom: 3px solid #ffc548;
+	width:60%;
+	height:5px;
+	margin-bottom: 5px;
+}
+
+.link {
+	color: #0cacf7;
+}
